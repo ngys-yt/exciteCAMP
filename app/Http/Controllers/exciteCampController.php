@@ -65,7 +65,8 @@ class exciteCampController extends Controller
 
     public function postDetail($id){
         if($post = Post::find($id)){
-            return view('post.post_detail')->with('post',$post);
+            $name = Post::find($id)->user->name;
+            return view('post.post_detail',compact('post','name'));
         }
 
         return redirect()->back();

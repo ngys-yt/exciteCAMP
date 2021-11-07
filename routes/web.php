@@ -17,7 +17,7 @@ Route::view('/', 'welcome')->name('welcome');
 Route::view('/register','auth.register')->name('register');
 Route::post('/register', 'AuthController@register');
 Route::view('/register/sent','auth.register_sent')->name('register_sent');
-Route::post('/register/verify/{token}', 'AuthController@verifyToken');
+Route::get('/register/verify/{token}', 'AuthController@verifyToken');
 Route::view('/register/main','auth.register_main')->name('register_main');
 Route::post('/register/main', 'AuthController@registerMain');
 Route::view('/register/complete','auth.register_complete')->name('register_complete');
