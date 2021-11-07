@@ -71,5 +71,20 @@ class exciteCampController extends Controller
         return redirect()->back();
     }
 
+    public function campList(){
+        $id_photo = Post::getCamp();
+        return view('post.camp_list')->with('id_photo',$id_photo);
+    }
+
+    public function foodList(){
+        $id_photo = Post::getFood();
+        return view('post.food_list')->with('id_photo',$id_photo);
+    }
+
+    public function gearList(){
+        $id_photo = Post::getGear();
+        return view('post.gear_list')->with('id_photo',$id_photo);
+    }
+
 
 }

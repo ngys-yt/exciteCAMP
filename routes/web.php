@@ -49,9 +49,9 @@ Route::group(['middleware' => ['auth']], function () {
     
 
 
-    Route::view('/camp/list', 'post.camp_list')->name('camp_list');
-    Route::view('/cook/list', 'post.cook_list')->name('cook_list');
-    Route::view('/gear/list', 'post.gear_list')->name('gear_list');
+    Route::get('/camp/list', 'exciteCampController@campList')->name('camp_list');
+    Route::get('/food/list', 'exciteCampController@foodList')->name('food_list');
+    Route::get('/gear/list', 'exciteCampController@gearList')->name('gear_list');
 
 
     Route::get('/logout', 'AuthController@logout')->name('logout');

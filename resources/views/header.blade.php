@@ -85,19 +85,19 @@
                     <a href="{{ route('camp_list') }}" class="menu-item">
                         <div class="item-box">
                             <i class="fas fa-campground"></i>
-                            <div class="item">キャンプ</div>
+                            <div class="item">CAMP</div>
                         </div>
                     </a>
                     <a href="{{ route('gear_list') }}" class="menu-item">
                         <div class="item-box">
                             <i class="fas fa-hammer"></i>
-                            <div class="item">ギア</div>
+                            <div class="item">GEAR</div>
                         </div>
                     </a>
-                    <a href="{{ route('cook_list') }}" class="menu-item">
+                    <a href="{{ route('food_list') }}" class="menu-item">
                         <div class="item-box mr-2">
                             <i class="fas fa-utensils"></i>
-                            <div class="item">料理</div>
+                            <div class="item">FOOD</div>
                         </div>
                     </a>
                 </ul>

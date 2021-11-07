@@ -48,7 +48,7 @@
             @endphp
             @foreach ($posts as $post)
                 <a href="{{ route('post_detail', ['id'=>$post->id]) }}">
-                <img src="{{ $post->photo }}" alt="" style="width: 100px">
+                    <img src="{{ $post->photo }}" alt="" style="width: 100px">
                 </a>
             @endforeach
             

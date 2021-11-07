@@ -36,4 +36,16 @@ class Post extends Model
         return $post->id;
         // 投稿を作ったタイミングでそのIDを取得⇨パラメーターとして送る
     }
+
+    public function getCamp(){
+        return $this->where('category','CAMP')->select('id','photo')->get();
+    }
+
+    public function getFood(){
+        return $this->where('category','FOOD')->select('id','photo')->get();
+    }
+
+    public function getGear(){
+        return $this->where('category','GEAR')->select('id','photo')->get();
+    }
 }
