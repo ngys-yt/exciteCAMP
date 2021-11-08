@@ -58,7 +58,13 @@
         </div>
         
         <div>
+            <a href="{{ route('direct_message') }}">DM</a>
+            <a href="{{ route('follow_list') }}">フォロー</a>
+            <a href="{{ route('follower_list') }}">フォロワー</a>
+            <a href="{{ route('contact') }}">問い合わせ</a>
             <a href="{{ route('create_profile') }}">編集</a>
+            <a href="{{ route('edit_password') }}">パスワード変更</a>
+            <a href="{{ route('withdrawal') }}">退会</a>
         </div>
     </div>
 </div>
