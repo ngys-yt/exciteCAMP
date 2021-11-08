@@ -82,6 +82,12 @@
                             <div class="item">マイページ</div>
                         </div>
                     </a>
+                    <a href="{{ route('notice') }}" class="menu-item">
+                        <div class="item-box">
+                            <i class="fas fa-bell"></i>
+                            <div class="item">通知</div>
+                        </div>
+                    </a>
                     <a href="{{ route('camp_list') }}" class="menu-item">
                         <div class="item-box">
                             <i class="fas fa-campground"></i>

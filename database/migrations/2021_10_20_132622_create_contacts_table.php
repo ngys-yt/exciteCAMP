@@ -14,15 +14,15 @@ class CreateContactsTable extends Migration
     public function up()
     {
         Schema::create('contacts', function (Blueprint $table) {
-            $table->SMALLINT('id');
-            $table->SMALLINT('user_id');
+            $table->smallIncrements('id');
+            $table->smallInteger('user_id');
             $table->string('title',300);
             $table->string('content',3000);
             $table->string('email',100);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 
-            $table->foreign('user_id')->references('id')->on('users');
+            // $table->foreign('user_id')->references('id')->on('users');
 
         });
     }

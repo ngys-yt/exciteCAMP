@@ -55,6 +55,9 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/food/list', 'exciteCampController@foodList')->name('food_list');
     Route::get('/gear/list', 'exciteCampController@gearList')->name('gear_list');
 
+    // 通知
+    Route::view('/notice', 'notice')->name('notice');
+
     // ログアウト
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
