@@ -28,11 +28,12 @@ class exciteCampController extends Controller
             $request->get('youtube')
         );
 
-        return redirect()->route('profile_detail');
+        return redirect()->route('mypage');
     }
 
-    public function profileDetail(){
-        return view('profile.profile_detail');
+    public function profileDetail($id){
+        $user = User::getProfile($id);
+        return view('profile.profile_detail')->with('user',$user);
     }
 
     public function createPost(Request $request){
@@ -65,8 +66,8 @@ class exciteCampController extends Controller
 
     public function postDetail($id){
         if($post = Post::find($id)){
-            $name = Post::find($id)->user->name;
-            return view('post.post_detail',compact('post','name'));
+            $user = Post::find($id)->user;
+            return view('post.post_detail',compact('post','user'));
         }
 
         return redirect()->back();

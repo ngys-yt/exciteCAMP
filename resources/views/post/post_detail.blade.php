@@ -3,7 +3,7 @@
 <div class="mx-auto" style="width: 100%">
     <h1>投稿詳細</h1>
     <p>
-        <a href="{{ route('profile_detail') }}">{{ $name }}</a>
+        <a href="{{ route('profile_detail',['id' => $user->id]) }}">{{ $user->name }}</a>
     </p>
     <p><img src="{{ $post->photo }}" alt="" style="width: 300px"></p>
     <p>カテゴリー：{{ $post->category }}</p>

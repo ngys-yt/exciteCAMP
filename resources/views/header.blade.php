@@ -76,7 +76,7 @@
                             <div class="item">投稿</div>
                         </div>
                     </a>
-                    <a href="{{ route('profile_detail') }}" class="menu-item">
+                    <a href="{{ route('mypage') }}" class="menu-item">
                         <div class="item-box">
                             <i class="fas fa-user"></i>
                             <div class="item">マイページ</div>
@@ -108,7 +108,7 @@
     @yield('create_profile')
     @yield('edit_profile')
     @yield('profile_detail')
-    @yield('profile_info')
+    @yield('mypage')
     @yield('camp_list')
     @yield('cook_list')
     @yield('create_post')

@@ -117,5 +117,10 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->save();
     }
 
+    public function getProfile($id){
+        $user = $this->find($id);
+        return $user;
+    }
+
     
 }
