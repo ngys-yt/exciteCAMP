@@ -34,6 +34,7 @@
         </div>
         <div>
             {{-- カテゴリー選択ボタン --}}
+            <a href="{{ route('mypage') }}?d=all">全て</a>
             <a href="{{ route('mypage') }}?c=CAMP">CAMP</a>
             <a href="{{ route('mypage') }}?c=FOOD">FOOD</a>
             <a href="{{ route('mypage') }}?c=GEAR">GEAR</a>
@@ -42,6 +43,8 @@
             @php
                 if($category=request()->get('c')){
                     $posts = Auth::user()->posts()->where('category', $category)->get();
+                }elseif(request()->get('d')){
+                    $posts = Auth::user()->posts;
                 }else{
                     $posts = Auth::user()->posts;
                 }

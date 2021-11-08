@@ -34,6 +34,7 @@
         </div>
         <div>
             {{-- カテゴリー選択ボタン --}}
+            <a href="{{ route('profile_detail',['id' => $user->id]) }}?d=all">全て</a>
             <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=CAMP">CAMP</a>
             <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=FOOD">FOOD</a>
             <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=GEAR">GEAR</a>
@@ -42,6 +43,8 @@
             @php
                 if($category=request()->get('c')){
                     $posts = $user->posts()->where('category', $category)->get();
+                }elseif(request()->get('d')){
+                    $posts = $user->posts;
                 }else{
                     $posts = $user->posts;
                 }
