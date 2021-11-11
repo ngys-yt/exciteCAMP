@@ -5,12 +5,12 @@
     <h2>カテゴリー選択</h2>
 {{-- モーダルでボタン３つ表示、中身が違う⇨data-targetとidをそれぞれ変更する --}}
 <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#camp">
+    <button type="button" class="btn btn-primary" id="camp_show">
         CAMP
     </button>
     <!-- The Modal -->
-    <div class="modal fade">
-        <div class="modal-dialog" .modal-lg>
+    <div class="modal fade" id="camp" role="dialog"> 
+        <div class="modal-dialog">
             <div class="modal-content">
         <!-- Modal Header -->
                 <div class="modal-header">
@@ -30,8 +30,8 @@
                             </select>
                             <input type="text" id="keyword" autocomplete="off"><button id="search">検索実行</button>
                             <button id="clear">結果クリア</button>
-                            <div id="map"></div>
-                            @include('/category/map_body')
+                            <div id="map" style="width: 300px; height: 300px;"></div>
+                            {{-- @include('/category/map_body') --}}
                         </div>
                         <input type="submit" value="決定">
                     </form>
@@ -40,12 +40,37 @@
         </div>
     </div>
 
+
+<script>
+    $('#camp_show').on('click', function() {
+        var map;
+        $('#camp').modal('show');
+    });
+    
+    $("#camp").on("shown.bs.modal", function () {
+        // #mapにmapを表示
+        function initMap() {
+            // 座標の初期設定(中心)
+            const myLatLng = { lat: 34.69139, lng: 135.18306 };
+            map = new google.maps.Map(document.getElementById("map"), {
+            zoom: 8,
+            center: myLatLng,
+            });
+
+            console.log(map);
+        };
+    });
+</script>
+
 <!-- Button to Open the Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cook">
         FOOD
     </button>
+    {{-- toggle = 何をするか  target = どの要素を開くか---↑cookというIDをもつモーダルが表示される --}}
+
     <!-- The Modal -->
-    <div class="modal fade" id="cook">
+    <div class="modal fade" id="cook" aria-labelledby="basicModal"aria-hidden="true">
+                {{-- idはdata-targetに合わせる --}}
         <div class="modal-dialog">
             <div class="modal-content">
         <!-- Modal Header -->
@@ -85,7 +110,7 @@
         GEAR
     </button>
     <!-- The Modal -->
-    <div class="modal fade" id="gear">
+    <div class="modal fade" id="gear" aria-labelledby="basicModal"aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
         <!-- Modal Header -->

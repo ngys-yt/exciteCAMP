@@ -1,6 +1,4 @@
-<script>
-$('#camp').on('hidden.bs.modal', function (event) {
-
+{{-- <script>
   var map;
   var marker;
   // map表示
@@ -12,7 +10,7 @@ $('#camp').on('hidden.bs.modal', function (event) {
       center: myLatLng,
     });
 
-      // 検索実行ボタンが押下されたとき
+      // 検索実行ボタンが押されたとき
     document.getElementById('search').addEventListener('click', function() {
 
       var place = document.getElementById('keyword').value;
@@ -50,7 +48,7 @@ $('#camp').on('hidden.bs.modal', function (event) {
       });
     });
 
-    // 結果クリアーボタン押下時
+    // 結果クリアーボタン
     document.getElementById('clear').addEventListener('click', function() {
       deleteMakers();
     });
@@ -101,4 +99,4 @@ $('#camp').on('hidden.bs.modal', function (event) {
   map.type = 'text/css';
   var head = document.getElementsByTagName('head')[0];
   head.appendChild(link);
-</script>
+</script> --}}
