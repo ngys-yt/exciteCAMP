@@ -73,6 +73,14 @@ class exciteCampController extends Controller
         return redirect()->back();
     }
 
+    // public function like_status(Request $request){
+    //     if($request->input('like_status') == 0){ //ステータスが0のときはデータベースに情報を保存
+    //         Like::createLike($request->get('post_id'));
+    //     }elseif($request->input('like_status') == 1){ //ステータスが1のときはデータベースから情報を削除
+    //         Like::deleteLike($request->get('post_id'));
+    //     }
+    // }
+
     public function campList(){
         $id_photo = Post::getCamp();
         return view('post.camp_list')->with('id_photo',$id_photo);

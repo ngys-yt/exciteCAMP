@@ -46,8 +46,20 @@
             .item{
                 font-size: 5px;
             }
+
+            .title{
+                height: 400px;
+                background-color:rgb(5, 7, 12);
+            }
+
+            .hart{
+                color: red;
+                border: none;  /* 枠線を消す */
+                outline: none; /* クリックしたときに表示される枠線を消す */
+                background: transparent; /* 背景の灰色を消す */
+            }
+
         </style>
-        @yield('top_style')
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
