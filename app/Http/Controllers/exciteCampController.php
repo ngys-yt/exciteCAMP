@@ -7,6 +7,7 @@ use App\Http\Requests\exciteCampRequest;
 use Illuminate\Support\Facades\Auth;
 use Facades\App\User;
 use Facades\App\Post;
+use Facades\App\Like;
 
 
 class exciteCampController extends Controller
@@ -67,7 +68,8 @@ class exciteCampController extends Controller
     public function postDetail($id){
         if($post = Post::find($id)){
             $user = Post::find($id)->user;
-            return view('post.post_detail',compact('post','user'));
+            $like = Auth::user()->like()->where('post_ids','like', '%,'.$id.',%')->exists();
+            return view('post.post_detail',compact('post','user','like'));
         }
 
         return redirect()->back();
@@ -80,6 +82,12 @@ class exciteCampController extends Controller
     //         Like::deleteLike($request->get('post_id'));
     //     }
     // }
+
+    public function like(Request $request){
+        Like::likeToggle($request->get('post_id'));
+
+        return redirect()->route('post_detail', ['id' => $request->get('post_id')]);
+    }
 
     public function campList(){
         $id_photo = Post::getCamp();

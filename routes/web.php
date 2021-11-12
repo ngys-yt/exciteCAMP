@@ -68,5 +68,7 @@ Route::group(['middleware' => ['auth']], function () {
     // ログアウト
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
+    Route::post('/post/like', 'exciteCampController@like')->name('like');
+
 });
 

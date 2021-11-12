@@ -14,31 +14,40 @@
         <div>内容：{{ $post->content }}</div>
         <div>
             いいね
-            {{-- @if(post_idsの中にpost_idがある){
-                <a class="hart">
-                    <i class="fas fa-heart" id="like" post_id="{{ $post->id }}" like_status="1"></i>
-                </a>
-            }@else{
-                <a class="hart">
-                    <i class="far fa-heart" id="like" post_id="{{ $post->id }}" like_status="0"></i> 
-                </a>
-            } --}}
+            @if($like)
+                <form action="{{ route('like') }}" name="like" method="POST">
+                    @csrf
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                    <span class="heart" onclick="document.like.submit()">
+                        <i class="fas fa-heart" id="like-{{ $post->id }}"></i>
+                    </span>
+                </form>
+            @else
+                <form action="{{ route('like') }}" name="like" method="POST">
+                    @csrf
+                    <input type="hidden" name="post_id" value="{{ $post->id }}">
+                    <span class="heart" onclick="document.like.submit()">
+                        <i class="far fa-heart" id="like-{{ $post->id }}"></i>
+                    </span>
+                </form>
+                
+            @endif
         </div>
     </div>
-    <script>
+    {{-- <script>
         $(function () {
             $("#like").on("click", function () {
                 post_id = $(this).attr("post_id");
                 like_status = $(this).attr("like_status");
                 click_hart = $(this);
                 $.ajax({
-                    // headers: {
-                    //     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                    // },
-                    type: "GET",
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}'
+                    },
+                    type: "POST",
                     url: "/post/liks",
-                    data: "post_id": post_id, "like_status": like_status
-                }); // ここまで.ajax()
+                    data: "post_id": post_id
+                }) // ここまで.ajax()
 
                 // 処理成功
                 .done(function (data) {
@@ -56,9 +65,9 @@
                 .fail(function (data) {
                     alert('いいね処理失敗');
                 })
-            }) // ここまで click function()
-        })
-    </script>
+            }); // ここまで click function()
+        });
+    </script> --}}
 </body>
 @endsection
 

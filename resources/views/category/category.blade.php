@@ -42,6 +42,8 @@
 
 
 <script>
+    // （to do）既にMAPが表示されているモーダルをクリックで開く
+
     $('#camp_show').on('click', function() {
         var map;
         $('#camp').modal('show');
