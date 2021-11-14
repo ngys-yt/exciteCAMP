@@ -14,9 +14,9 @@ class CreateFavoritesTable extends Migration
     public function up()
     {
         Schema::create('likes', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('user_id');
-            $table->smallInteger('post_ids');
+            $table->integerIncrements('id');
+            $table->integer('user_id');
+            $table->longText('post_ids');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 

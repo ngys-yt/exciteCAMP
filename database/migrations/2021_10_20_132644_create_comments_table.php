@@ -14,9 +14,9 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         Schema::create('comments', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('user_id');
-            $table->smallInteger('post_id');
+            $table->integerIncrements('id');
+            $table->integer('user_id');
+            $table->integer('post_id');
             $table->string('content',1000);
             $table->string('status',30);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

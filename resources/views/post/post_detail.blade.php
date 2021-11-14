@@ -14,6 +14,7 @@
         <div>内容：{{ $post->content }}</div>
         <div>
             いいね
+            {{-- 自分のページには表示しない、いいね件数実装する --}}
             @if($like)
                 <form action="{{ route('like') }}" name="like" method="POST">
                     @csrf

@@ -14,10 +14,10 @@ class CreateMessagesTable extends Migration
     public function up()
     {
         Schema::create('messages', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('user_id');
+            $table->integerIncrements('id');
+            $table->integer('user_id');
             $table->string('content',3000);
-            $table->smallInteger('channel_id');
+            $table->integer('channel_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->timestamp('updated_at')->default(DB::raw('CURRENT_TIMESTAMP on update CURRENT_TIMESTAMP'));
 

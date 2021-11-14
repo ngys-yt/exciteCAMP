@@ -52,7 +52,7 @@
                 background-color:rgb(5, 7, 12);
             }
 
-            .hart{
+            .heart{
                 color: red;
                 border: none;  /* 枠線を消す */
                 outline: none; /* クリックしたときに表示される枠線を消す */

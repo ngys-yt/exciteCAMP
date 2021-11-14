@@ -14,9 +14,9 @@ class CreateMassageChannelsTable extends Migration
     public function up()
     {
         Schema::create('massage_channels', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('user_id_1');
-            $table->smallInteger('user_id_2');
+            $table->integerIncrements('id');
+            $table->integer('user_id_1');
+            $table->integer('user_id_2');
             $table->tinyInteger('user_id_1_read_status');
             $table->tinyInteger('user_id_2_read_status');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

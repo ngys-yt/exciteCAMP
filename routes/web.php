@@ -57,6 +57,11 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('/create/post', 'exciteCampController@sendPost');
     Route::get('/post/{id}/detail', 'exciteCampController@postDetail')->name('post_detail');
 
+    // いいね
+    Route::post('/post/like', 'exciteCampController@like')->name('like');
+    Route::post('/post/follow', 'exciteCampController@follow')->name('follow');
+
+
     // カテゴリー別投稿一覧
     Route::get('/camp/list', 'exciteCampController@campList')->name('camp_list');
     Route::get('/food/list', 'exciteCampController@foodList')->name('food_list');
@@ -68,7 +73,6 @@ Route::group(['middleware' => ['auth']], function () {
     // ログアウト
     Route::get('/logout', 'AuthController@logout')->name('logout');
 
-    Route::post('/post/like', 'exciteCampController@like')->name('like');
 
 });
 

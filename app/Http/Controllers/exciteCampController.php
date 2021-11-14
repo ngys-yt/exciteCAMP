@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use Facades\App\User;
 use Facades\App\Post;
 use Facades\App\Like;
+use Facades\App\Follow;
+
 
 
 class exciteCampController extends Controller
@@ -34,7 +36,9 @@ class exciteCampController extends Controller
 
     public function profileDetail($id){
         $user = User::getProfile($id);
-        return view('profile.profile_detail')->with('user',$user);
+        $follow = Auth::user()->follows()->where('follow_ids','like', '%,'.$id.',%')->exists();
+
+        return view('profile.profile_detail',compact('user','follow'));
     }
 
     public function createPost(Request $request){
@@ -75,19 +79,22 @@ class exciteCampController extends Controller
         return redirect()->back();
     }
 
-    // public function like_status(Request $request){
-    //     if($request->input('like_status') == 0){ //ステータスが0のときはデータベースに情報を保存
-    //         Like::createLike($request->get('post_id'));
-    //     }elseif($request->input('like_status') == 1){ //ステータスが1のときはデータベースから情報を削除
-    //         Like::deleteLike($request->get('post_id'));
-    //     }
-    // }
-
     public function like(Request $request){
         Like::likeToggle($request->get('post_id'));
 
+        // 投稿詳細を開き直す
         return redirect()->route('post_detail', ['id' => $request->get('post_id')]);
     }
+
+    public function follow(Request $request){
+        Follow::followToggle($request->get('follow_id'));
+
+        // プロフィール画面を開き直す
+        return redirect()->route('profile_detail', ['id' => $request->get('follow_id')]);
+    }
+
+
+
 
     public function campList(){
         $id_photo = Post::getCamp();

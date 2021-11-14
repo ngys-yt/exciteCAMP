@@ -14,9 +14,9 @@ class CreateReportManegesTable extends Migration
     public function up()
     {
         Schema::create('report_maneges', function (Blueprint $table) {
-            $table->smallIncrements('id');
-            $table->smallInteger('report_id');
-            $table->smallInteger('admin_id');
+            $table->integerIncrements('id');
+            $table->integer('report_id');
+            $table->integer('admin_id');
             $table->string('status',30);
             $table->string('memo',1000);
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

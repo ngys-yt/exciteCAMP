@@ -11,6 +11,27 @@
         </div>
         <div>
             名前:{{ $user->name }}
+            @if($follow)
+                <form action="{{ route('follow') }}" name="follow" method="POST">
+                    @csrf
+                    <input type="hidden" name="follow_id" value="{{ $user->id }}"> 
+                    <span class="follow" onclick="document.follow.submit()">
+                        <div >
+                            フォロー中<i class="fas fa-user" id="follow-{{ $user->id }}"></i>
+                        </div>
+                    </span>
+                </form>
+            @else
+                <form action="{{ route('follow') }}" name="follow" method="POST">
+                    @csrf
+                    <input type="hidden" name="follow_id" value="{{ $user->id }}"> 
+                    <span class="follow" onclick="document.follow.submit()">
+                        <div>
+                            フォローする<i class="far fa-user" id="follow-{{ $user->id }}"></i>
+                        </div>
+                    </span>
+                </form>
+            @endif
         </div>
         <div>
             自己紹介<br>
