@@ -3,7 +3,7 @@
 @section('create_profile')
 <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
 
-<form action="{{ route('profile_detail') }}" method="post" enctype="multipart/form-data">
+<form action="{{ route('create_profile') }}" method="post" enctype="multipart/form-data">
     @csrf
     <div>
         背景<img src="{{ Auth::user()->cover }}" alt="" style="width: 100px;">

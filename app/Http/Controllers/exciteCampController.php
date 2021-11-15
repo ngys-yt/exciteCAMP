@@ -16,10 +16,24 @@ class exciteCampController extends Controller
 {
     public function createProfile(Request $request){
         // storeメソッド⇨保存先指定
-        $cover = $request->file('cover')->store('public/profile_cover');
-        $cover = str_replace('public','/storage',$cover);  // $cover内 の /public を /storage に置換
-        $image = $request->file('image')->store('public/profile_image');
-        $image = str_replace('public','/storage',$image);
+        if($cover = $request->file('cover')){
+            $cover = $request->file('cover')->store('public/profile_cover');
+            $cover = str_replace('public','/storage',$cover);  // $cover内 の /public を /storage に置換
+            $image = NULL;
+        }elseif($image = $request->file('image')){
+            $image = $request->file('image')->store('public/profile_image');
+            $image = str_replace('public','/storage',$image);
+            $cover = NULL;
+        }elseif($cover && $image){
+            $cover = $request->file('cover')->store('public/profile_cover');
+            $cover = str_replace('public','/storage',$cover);  // $cover内 の /public を /storage に置換
+            $image = $request->file('image')->store('public/profile_image');
+            $image = str_replace('public','/storage',$image);
+        }else{
+            $cover = NULL;
+            $image = NULL;
+        }
+        
         User::createProfile(
             $cover,
             $image,
