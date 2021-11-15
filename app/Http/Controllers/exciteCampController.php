@@ -3,12 +3,12 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Requests\exciteCampRequest;
 use Illuminate\Support\Facades\Auth;
 use Facades\App\User;
 use Facades\App\Post;
 use Facades\App\Like;
 use Facades\App\Follow;
+use Facades\App\Follower;
 
 
 
@@ -36,9 +36,8 @@ class exciteCampController extends Controller
 
     public function profileDetail($id){
         $user = User::getProfile($id);
-        $follow = Auth::user()->follows()->where('follow_ids','like', '%,'.$id.',%')->exists();
 
-        return view('profile.profile_detail',compact('user','follow'));
+        return view('profile.profile_detail')->with('user',$user);
     }
 
     public function createPost(Request $request){
@@ -87,14 +86,11 @@ class exciteCampController extends Controller
     }
 
     public function follow(Request $request){
-        Follow::followToggle($request->get('follow_id'));
-
+        Follow::followToggle($request->get('user_id'));
+        // Follower::followerToggle($request->get('user_id'));
         // プロフィール画面を開き直す
         return redirect()->route('profile_detail', ['id' => $request->get('follow_id')]);
     }
-
-
-
 
     public function campList(){
         $id_photo = Post::getCamp();

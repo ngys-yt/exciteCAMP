@@ -11,7 +11,7 @@ class Message extends Model
         return $this->belongsTo('App\User');
     }
 
-    public function message_channel()
+    public function message_channels()
     {
         return $this->belongsTo('App\MessageChannel','id','channel_id');
     }

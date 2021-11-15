@@ -33,6 +33,18 @@
             </a>
         </div>
         <div>
+            <a href="{{ route('direct_message') }}">DM</a>
+            <a href="{{ route('ff_list') }}?1=follow">フォロー</a>
+            <a href="{{ route('ff_list') }}?2=follower">フォロワー</a>
+            <a href="{{ route('contact') }}">問い合わせ</a>
+            <a href="{{ route('create_profile') }}">編集</a>
+            <a href="{{ route('edit_password') }}">パスワード変更</a>
+            <a href="{{ route('withdrawal') }}">退会</a>
+        </div>
+        <div>
+
+        </div>
+        <div>
             {{-- カテゴリー選択ボタン --}}
             <a href="{{ route('mypage') }}?d=all">全て</a>
             <a href="{{ route('mypage') }}?c=CAMP">CAMP</a>
@@ -55,16 +67,6 @@
                 </a>
             @endforeach
             
-        </div>
-        
-        <div>
-            <a href="{{ route('direct_message') }}">DM</a>
-            <a href="{{ route('follow_list') }}">フォロー</a>
-            <a href="{{ route('follower_list') }}">フォロワー</a>
-            <a href="{{ route('contact') }}">問い合わせ</a>
-            <a href="{{ route('create_profile') }}">編集</a>
-            <a href="{{ route('edit_password') }}">パスワード変更</a>
-            <a href="{{ route('withdrawal') }}">退会</a>
         </div>
     </div>
 </div>

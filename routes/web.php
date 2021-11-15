@@ -38,9 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::view('/create/profile', 'profile.create_profile');
     Route::post('/profile/detail', 'exciteCampController@sendProfile')->name('send_profile');
     Route::get('/profile/{id}/detail', 'exciteCampController@profileDetail')->name('profile_detail');
+    Route::view('/profile/ff_list', 'profile.ff_list')->name('ff_list');
     Route::view('/direct_message', 'profile.direct_message')->name('direct_message');
-    Route::view('/follow_list', 'profile.ff_list')->name('follow_list');
-    Route::view('/follower_list', 'profile.ff_list')->name('follower_list');
     Route::view('/contact', 'profile.contact')->name('contact');
     Route::view('/edit_password', 'profile.edit_password')->name('edit_password');
     Route::view('/withdrawal', 'profile.withdrawal')->name('withdrawal');

@@ -14,7 +14,7 @@
             @if($follow)
                 <form action="{{ route('follow') }}" name="follow" method="POST">
                     @csrf
-                    <input type="hidden" name="follow_id" value="{{ $user->id }}"> 
+                    <input type="hidden" name="user_id" value="{{ $user->id }}"> 
                     <span class="follow" onclick="document.follow.submit()">
                         <div >
                             フォロー中<i class="fas fa-user" id="follow-{{ $user->id }}"></i>
@@ -24,7 +24,7 @@
             @else
                 <form action="{{ route('follow') }}" name="follow" method="POST">
                     @csrf
-                    <input type="hidden" name="follow_id" value="{{ $user->id }}"> 
+                    <input type="hidden" name="user_id" value="{{ $user->id }}"> 
                     <span class="follow" onclick="document.follow.submit()">
                         <div>
                             フォローする<i class="far fa-user" id="follow-{{ $user->id }}"></i>
@@ -52,6 +52,15 @@
             <a href="{{ $user->youtube }}">
                 <i class="fab fa-youtube"></i>
             </a>
+        </div>
+        <div>
+            <a href="{{ route('direct_message') }}">DM</a>
+            <a href="{{ route('ff_list',['id' => $user->id]) }}">フォロー</a>
+            <a href="{{ route('ff_list',['id' => $user->id]) }}">フォロワー</a>
+            <a href="{{ route('contact') }}">問い合わせ</a>
+            <a href="{{ route('create_profile') }}">編集</a>
+            <a href="{{ route('edit_password') }}">パスワード変更</a>
+            <a href="{{ route('withdrawal') }}">退会</a>
         </div>
         <div>
             {{-- カテゴリー選択ボタン --}}
