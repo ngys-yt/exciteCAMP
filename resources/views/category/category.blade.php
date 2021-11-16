@@ -1,6 +1,5 @@
 @extends('header')
 @section('category')
-<body>
 <div class="container mt-3">
     <h2>カテゴリー選択</h2>
 {{-- モーダルでボタン３つ表示、中身が違う⇨data-targetとidをそれぞれ変更する --}}
@@ -10,7 +9,7 @@
     </button>
     <!-- The Modal -->
     <div class="modal fade" id="camp" role="dialog"> 
-        <div class="modal-dialog">
+        <div class="modal-dialog modal-xl">
             <div class="modal-content">
         <!-- Modal Header -->
                 <div class="modal-header">
@@ -19,51 +18,23 @@
                 </div>
         <!-- Modal body -->
                 <div class="modal-body">
-                    <form action="{{ route('create_post') }}" method="post">
-                        <div class="form-group">
-                            @csrf
-                            都道府県:
-                            <select>
-                            @foreach(config('pref') as $pref_id => $name)
-                                <option value="{{ $pref_id }}">{{ $name }}</option>
-                            @endforeach
-                            </select>
-                            <input type="text" id="keyword" autocomplete="off"><button id="search">検索実行</button>
-                            <button id="clear">結果クリア</button>
-                            <div id="map" style="width: 300px; height: 300px;"></div>
-                            {{-- @include('/category/map_body') --}}
-                        </div>
-                        <input type="submit" value="決定">
-                    </form>
+                    <div class="form-group">
+                        @csrf
+                        都道府県:
+                        <select>
+                        @foreach(config('pref') as $pref_id => $name)
+                            <option value="{{ $pref_id }}">{{ $name }}</option>
+                        @endforeach
+                        </select>
+                        <input type="text" id="keyword" autocomplete="off"><button id="search">検索実行</button>
+                        <button id="clear">結果クリア</button>
+                        <div id="map" style="width: 100%; height: 600px;"></div>
+                    </div>
+                    <input type="submit" value="決定">
                 </div>
             </div>
         </div>
     </div>
-
-
-<script>
-    // （to do）既にMAPが表示されているモーダルをクリックで開く
-
-    $('#camp_show').on('click', function() {
-        var map;
-        $('#camp').modal('show');
-    });
-    
-    $("#camp").on("shown.bs.modal", function () {
-        // #mapにmapを表示
-        function initMap() {
-            // 座標の初期設定(中心)
-            const myLatLng = { lat: 34.69139, lng: 135.18306 };
-            map = new google.maps.Map(document.getElementById("map"), {
-            zoom: 8,
-            center: myLatLng,
-            });
-
-            console.log(map);
-        };
-    });
-</script>
-
 <!-- Button to Open the Modal -->
     <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#cook">
         FOOD
@@ -144,5 +115,8 @@
         </div>
     </div>
 </div>
-</body>
+
+<script src="{{ asset('/js/map.js') }}"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZCYYOoFZOIseoW_YfdYcX5TIupEPAzI&callback=initMap"></script>
+
 @endsection

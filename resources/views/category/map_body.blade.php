@@ -1,4 +1,4 @@
-{{-- <script>
+<script>
   var map;
   var marker;
   // map表示
@@ -52,44 +52,9 @@
     document.getElementById('clear').addEventListener('click', function() {
       deleteMakers();
     });
-
   }
 
-  // マーカーのセットを実施する
-  function setMarker(setplace) {
-    // 既にあるマーカーを削除
-    deleteMakers();
-
-    
-      marker = new google.maps.Marker({
-        position: setplace,
-        map: map,
-      });
-  }
-
-  //マーカーを削除する
-  function deleteMakers() {
-    if(marker != null){
-      marker.setMap(null);
-    }
-    marker = null;
-  }
-
-  // マーカーへの吹き出しの追加
-  function setInfoW(place, latlng, address) {
-    infoWindow = new google.maps.InfoWindow({
-    content: "<a href='http://www.google.com/search?q=" + place + "' target='_blank'>" + place + "</a><br><br>" + latlng + "<br><br>" + address + "<br><br><a href='http://www.google.com/search?q=" + place + "&tbm=isch' target='_blank'>画像検索 by google</a>"
-    });
-  }
-
-  // クリックイベント
-  function markerEvent() {
-    marker.addListener('click', function() {
-      infoWindow.open(map, marker);
-    });
-  }
   
-})
 
 // CSSファイル読み込み
 // 参考URL ⇨ https://qiita.com/hibikikudo/items/9f96247142c640dd3a6a
@@ -99,4 +64,4 @@
   map.type = 'text/css';
   var head = document.getElementsByTagName('head')[0];
   head.appendChild(link);
-</script> --}}
+</script>
