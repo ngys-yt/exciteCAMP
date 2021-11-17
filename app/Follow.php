@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Facades\App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 
@@ -30,5 +31,37 @@ class Follow extends Model
             $i->follow_ids = ",$user_id,";
             $i->save();
         }
+    }
+
+    public function getFollowIds($id){
+        // followsにユーザー($id)があるか そのままfollow_ids取得
+        if($i = $this->where('user_id',$id)->value('follow_ids')){
+            // '$i'はカンマ区切りの文字列のため配列にする(explode)
+            $follow_ids = explode("," ,$i);
+            // $follow_idsは配列
+            // Userテーブルから「$follow_ids」を含む'id'のデータを取得(whereIn)
+            // そのデータから「'name'」カラム複数取得(pluck)
+            $follow_users = User::whereIn('id',$follow_ids)->get();
+        }else{
+            $follow_users = NULL;
+        }
+
+        return $follow_users;
+    }
+
+    public function getFollowerIds($id){
+        // followsからuser_idとfollow_idsを全て取得(配列)
+        $i = $this->pluck('follow_ids','user_id');
+        $follower_ids = [];
+        foreach($i as $user_id => $follow_ids){
+            if(strpos($follow_ids, ",$id,") === false){
+                ;   // $follow_idsに$idが含まれない場合何も処理を実行しない
+            }else{
+                array_push($follower_ids,$user_id);
+            }
+        }
+        $follower_users = User::whereIn('id',$follower_ids)->get();
+
+        return $follower_users;
     }
 }

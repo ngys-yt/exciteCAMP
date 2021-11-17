@@ -121,6 +121,5 @@ class User extends Authenticatable implements MustVerifyEmail
         $user = $this->find($id);
         return $user;
     }
-
     
 }

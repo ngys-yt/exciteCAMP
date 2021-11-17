@@ -8,7 +8,6 @@ use Facades\App\User;
 use Facades\App\Post;
 use Facades\App\Like;
 use Facades\App\Follow;
-use Facades\App\Follower;
 
 
 
@@ -50,8 +49,15 @@ class exciteCampController extends Controller
 
     public function profileDetail($id){
         $user = User::getProfile($id);
+        $follow = Auth::user()->follows()->where('follow_ids','like', '%,'.$id.',%')->exists();
 
-        return view('profile.profile_detail')->with('user',$user);
+        return view('profile.profile_detail',compact('user','follow'));
+    }
+
+    public function ffList($id){
+        $follow_users = Follow::getFollowIds($id);
+        $follower_users = Follow::getFollowerIds($id);
+        return view('profile.ff_list',compact('follow_users','follower_users'));
     }
 
     public function createPost(Request $request){
@@ -101,9 +107,8 @@ class exciteCampController extends Controller
 
     public function follow(Request $request){
         Follow::followToggle($request->get('user_id'));
-        // Follower::followerToggle($request->get('user_id'));
         // プロフィール画面を開き直す
-        return redirect()->route('profile_detail', ['id' => $request->get('follow_id')]);
+        return redirect()->route('profile_detail', ['id' => $request->get('user_id')]);
     }
 
     public function campList(){

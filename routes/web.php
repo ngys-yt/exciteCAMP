@@ -38,7 +38,8 @@ Route::group(['middleware' => ['auth']], function () {
     Route::view('/create/profile', 'profile.create_profile');
     Route::post('/profile/detail', 'exciteCampController@sendProfile')->name('send_profile');
     Route::get('/profile/{id}/detail', 'exciteCampController@profileDetail')->name('profile_detail');
-    Route::view('/profile/ff_list', 'profile.ff_list')->name('ff_list');
+    Route::post('/post/follow', 'exciteCampController@follow')->name('follow');
+    Route::get('/profile/{id}/ff_list', 'exciteCampController@ffList')->name('ff_list');
     Route::view('/direct_message', 'profile.direct_message')->name('direct_message');
     Route::view('/contact', 'profile.contact')->name('contact');
     Route::view('/edit_password', 'profile.edit_password')->name('edit_password');
@@ -58,7 +59,6 @@ Route::group(['middleware' => ['auth']], function () {
 
     // いいね
     Route::post('/post/like', 'exciteCampController@like')->name('like');
-    Route::post('/post/follow', 'exciteCampController@follow')->name('follow');
 
 
     // カテゴリー別投稿一覧
