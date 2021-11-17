@@ -57,6 +57,12 @@ class exciteCampController extends Controller
     public function ffList($id){
         $follow_users = Follow::getFollowIds($id);
         $follower_users = Follow::getFollowerIds($id);
+        if(!$follow_users){
+            $follow_users = NULL;
+        }elseif(!$follower_users){
+            $follower_users = NULL;
+        }
+        
         return view('profile.ff_list',compact('follow_users','follower_users'));
     }
 
