@@ -49,7 +49,7 @@ class exciteCampController extends Controller
 
     public function profileDetail($id){
         $user = User::getProfile($id);
-        $follow = Auth::user()->follows()->where('follow_ids','like', '%,'.$id.',%')->exists();
+        $follow = Auth::user()->follow()->where('follow_ids','like', '%,'.$id.',%')->exists();
 
         return view('profile.profile_detail',compact('user','follow'));
     }
@@ -62,7 +62,7 @@ class exciteCampController extends Controller
         }elseif(!$follower_users){
             $follower_users = NULL;
         }
-        
+
         return view('profile.ff_list',compact('follow_users','follower_users'));
     }
 
@@ -97,6 +97,7 @@ class exciteCampController extends Controller
     public function postDetail($id){
         if($post = Post::find($id)){
             $user = Post::find($id)->user;
+            // ログインユーザーのLike()のpost_idsに$idがいるか、存在確認(exists)
             $like = Auth::user()->like()->where('post_ids','like', '%,'.$id.',%')->exists();
             return view('post.post_detail',compact('post','user','like'));
         }
@@ -132,5 +133,31 @@ class exciteCampController extends Controller
         return view('post.gear_list')->with('id_photo',$id_photo);
     }
 
+    public function directMessage(Request $request){
+         // フォローしているユーザーがいるか
+        if($ids= Auth::user()->follow()->value('follow_ids')){
+            // 検索結果取得
+            $key_word = $request->get('name');
+            // $follow_idsを配列にする
+            $follow_ids = explode("," ,$ids);
+            // フォローユーザーを取得
+            $follow_users = User::whereIn('id',$follow_ids)->get();
+            // follow_usersからkey_wordの部分一致のnameを取得(ない場合エラー返す)
+            foreach($follow_users as $follow_user){
+                if($users = $follow_user->where('name', 'like', '%'.$key_word.'%')->get()){
+                    return view('profile.direct_message')->with('users', $users);
+                }else{
+                    return view('profile.direct_message')->with('message', 'そのユーザーはいません');
+                }
+            }
+        }else{
+            return view('profile.direct_message')->with('message', 'フォローユーザーがいません');
+        }
+
+        /*****  ↑DMのページを一枚にしてフラッシュメッセージをredirectで送る ******/
+        /*****  userモデルで処理を行う ******/
+
+
+    }
 
 }

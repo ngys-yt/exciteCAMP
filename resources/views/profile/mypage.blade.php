@@ -33,7 +33,7 @@
             </a>
         </div>
         <div>
-            <a href="{{ route('direct_message') }}">DM</a>
+            <a href="{{ route('dm_serch') }}">DM</a>
             <a href="{{ route('ff_list',['id' => Auth::id()]) }}?1=follow">フォロー</a>
             <a href="{{ route('ff_list',['id' => Auth::id()]) }}?2=follower">フォロワー</a>
             <a href="{{ route('contact') }}">問い合わせ</a>

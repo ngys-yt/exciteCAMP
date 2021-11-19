@@ -38,12 +38,17 @@ Route::group(['middleware' => ['auth']], function () {
     Route::view('/create/profile', 'profile.create_profile');
     Route::post('/profile/detail', 'exciteCampController@sendProfile')->name('send_profile');
     Route::get('/profile/{id}/detail', 'exciteCampController@profileDetail')->name('profile_detail');
-    Route::post('/post/follow', 'exciteCampController@follow')->name('follow');
-    Route::get('/profile/{id}/ff_list', 'exciteCampController@ffList')->name('ff_list');
-    Route::view('/direct_message', 'profile.direct_message')->name('direct_message');
     Route::view('/contact', 'profile.contact')->name('contact');
     Route::view('/edit_password', 'profile.edit_password')->name('edit_password');
     Route::view('/withdrawal', 'profile.withdrawal')->name('withdrawal');
+
+    // フォロー
+    Route::post('/post/follow', 'exciteCampController@follow')->name('follow');
+    Route::get('/profile/{id}/ff_list', 'exciteCampController@ffList')->name('ff_list');
+
+    // DM
+    Route::view('profile/dm_serch', 'profile.dm_serch')->name('dm_serch');
+    Route::get('profile/direct_message', 'exciteCampController@directMessage')->name('direct_message');
 
 
     // 投稿カテゴリー選択

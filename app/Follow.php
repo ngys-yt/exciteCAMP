@@ -39,8 +39,6 @@ class Follow extends Model
             // '$i'はカンマ区切りの文字列のため配列にする(explode)
             $follow_ids = explode("," ,$i);
             // $follow_idsは配列
-            // Userテーブルから「$follow_ids」を含む'id'のデータを取得(whereIn)
-            // そのデータから「'name'」カラム複数取得(pluck)
             $follow_users = User::whereIn('id',$follow_ids)->get();
         }else{
             $follow_users = NULL;
