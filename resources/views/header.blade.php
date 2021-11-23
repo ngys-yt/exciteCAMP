@@ -4,6 +4,10 @@
         <title>exciteCAMP</title>
 
         <style>
+            html,body{
+                height: 100%;
+            }
+            
             header{
                 display: flex;
                 align-items: center;
@@ -62,7 +66,6 @@
         <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
     </head>
@@ -128,5 +131,7 @@
         @yield('post_detail')
         @yield('gear_list')
         @yield('category')
+        @yield('direct_message')
+        @yield('extract_message')
     </body>
 </html>

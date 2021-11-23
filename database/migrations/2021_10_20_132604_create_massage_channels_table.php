@@ -13,7 +13,7 @@ class CreateMassageChannelsTable extends Migration
      */
     public function up()
     {
-        Schema::create('massage_channels', function (Blueprint $table) {
+        Schema::create('message_channels', function (Blueprint $table) {
             $table->integerIncrements('id');
             $table->integer('user_id_1');
             $table->integer('user_id_2');

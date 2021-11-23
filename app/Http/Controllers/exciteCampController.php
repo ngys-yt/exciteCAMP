@@ -8,6 +8,7 @@ use Facades\App\User;
 use Facades\App\Post;
 use Facades\App\Like;
 use Facades\App\Follow;
+use Facades\App\MessageChannel;
 
 
 
@@ -120,20 +121,20 @@ class exciteCampController extends Controller
 
     public function campList(){
         $id_photo = Post::getCamp();
-        return view('post.camp_list')->with('id_photo',$id_photo);
+        return view('post.camp_list', compact('id_photo'));
     }
 
     public function foodList(){
         $id_photo = Post::getFood();
-        return view('post.food_list')->with('id_photo',$id_photo);
+        return view('post.food_list', compact('id_photo'));
     }
 
     public function gearList(){
         $id_photo = Post::getGear();
-        return view('post.gear_list')->with('id_photo',$id_photo);
+        return view('post.gear_list', compact('id_photo'));
     }
 
-    public function directMessage(Request $request){
+    public function sendName(Request $request){
          // フォローしているユーザーがいるか
         if($ids= Auth::user()->follow()->value('follow_ids')){
             // 検索結果取得
@@ -145,19 +146,39 @@ class exciteCampController extends Controller
             // follow_usersからkey_wordの部分一致のnameを取得(ない場合エラー返す)
             foreach($follow_users as $follow_user){
                 if($users = $follow_user->where('name', 'like', '%'.$key_word.'%')->get()){
-                    return view('profile.direct_message')->with('users', $users);
-                }else{
-                    return view('profile.direct_message')->with('message', 'そのユーザーはいません');
+                    return view('profile.extract_message', ['users'=>$users]);
+                }elseif($users === NULL){
+                    return redirect()->route('extract_message')->with('message', 'そのユーザーはいません');
                 }
             }
         }else{
-            return view('profile.direct_message')->with('message', 'フォローユーザーがいません');
+            return redirect()->route('extract_message')->with('message', 'フォローユーザーがいません');
+        }
+    }
+
+    public function directMessage(){
+        $channels = MessageChannel::getChannels();
+        $message_partners = array();
+
+        foreach($channels as $channel){
+            if($channel->user_id_1 == Auth::id()){
+                $channel_user = $channel->user_id_2;
+            }elseif($channel->user_id_2 == Auth::id()){
+                $channel_user = $channel->user_id_1;
+            }
+
+            $message_partners[] = User::where('id', $channel_user)->first();
         }
 
-        /*****  ↑DMのページを一枚にしてフラッシュメッセージをredirectで送る ******/
-        /*****  userモデルで処理を行う ******/
+        return view('profile.direct_message', ['message_partners'=>$message_partners]);
+    }
 
+    public function messageContent(Request $request){
+        MessageChannel::statusToggle($request->get('user_id'));
+        $messages = MessageChannel::getMessages($request->get('user_id'));
 
+        return redirect()->route('direct_message')->with(compact('messages'));
+        // redirectはsessionとしてviewに渡される view側表示方法注意
     }
 
 }

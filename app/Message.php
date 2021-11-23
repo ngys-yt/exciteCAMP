@@ -13,6 +13,6 @@ class Message extends Model
 
     public function message_channels()
     {
-        return $this->belongsTo('App\MessageChannel','id','channel_id');
+        return $this->belongsTo('App\MessageChannel','id','channel_id')->orderBy('created_at', 'asc');
     }
 }

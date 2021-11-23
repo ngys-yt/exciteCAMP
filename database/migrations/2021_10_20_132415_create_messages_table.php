@@ -15,7 +15,6 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->integerIncrements('id');
-            $table->integer('user_id');
             $table->string('content',3000);
             $table->integer('channel_id');
             $table->timestamp('created_at')->default(DB::raw('CURRENT_TIMESTAMP'));

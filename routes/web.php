@@ -47,8 +47,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/profile/{id}/ff_list', 'exciteCampController@ffList')->name('ff_list');
 
     // DM
-    Route::view('profile/dm_serch', 'profile.dm_serch')->name('dm_serch');
     Route::get('profile/direct_message', 'exciteCampController@directMessage')->name('direct_message');
+    Route::post('profile/message_content', 'exciteCampController@messageContent')->name('message_content');
+    Route::get('profile/send_name', 'exciteCampController@sendName')->name('send_name');
+    Route::view('profile/extract_message', 'profile.extract_message')->name('extract_message');
+    Route::view('profile/message_contents', 'profile.message_contents')->name('message_contents');
+
 
 
     // 投稿カテゴリー選択
