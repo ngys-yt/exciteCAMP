@@ -49,9 +49,13 @@ Route::group(['middleware' => ['auth']], function () {
     // DM
     Route::get('profile/direct_message', 'exciteCampController@directMessage')->name('direct_message');
     Route::post('profile/message_content', 'exciteCampController@messageContent')->name('message_content');
-    Route::get('profile/send_name', 'exciteCampController@sendName')->name('send_name');
-    Route::view('profile/extract_message', 'profile.extract_message')->name('extract_message');
-    Route::view('profile/message_contents', 'profile.message_contents')->name('message_contents');
+    Route::post('profile/{id}/get_message', 'exciteCampController@getMessage')->name('get_message');
+    Route::post('profile/send_message', 'exciteCampController@sendMessage')->name('send_message');
+    // Route::get('profile/name_seach', 'exciteCampController@nameSeach')->name('name_seach');
+    // Route::post('profile/new_message_content', 'exciteCampController@newMessageContent')->name('new_message_content');
+    // Route::post('profile/new_send_message', 'exciteCampController@newSendMessage')->name('new_send_message');
+    // Route::get('profile/extract_user', 'exciteCampController@extractUser')->name('extract_user');
+
 
 
 

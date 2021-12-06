@@ -1,0 +1,60 @@
+.chat {
+    position: relative;
+}
+
+/* 右からの吹き出しテキスト */
+.chat_text_right {
+    border: 1px solid #00da00; /* 枠線(太さ、線の種類、線の色) */
+    background-color:#00da00; /* 背景色 */ 
+    margin: 5px 5px 5px 200px; /* 何も指定しないと画面端から枠線になるので、マージンを取る */
+    border-radius: 10px; /* 四隅を丸めて、柔らかい感じにする */
+    padding: 10px; /* 文章の上下に隙間を作る */
+    /* position: relation;  absoluteだと文字数に依存。relationなら親要素のサイズ一杯に広がる */
+    }
+
+    /* 左画像 */
+.chat-img-left {
+    float: left;
+    }
+
+  /* 左からの吹き出しテキスト */
+.chat_text_left {
+    border: 1px solid lightgrey; /* 枠線(太さ、線の種類、線の色) */
+    background-color:lightgrey; /* 背景色 */  
+    margin: 5px 150px 5px 80px; /* 何も指定しないと画面端から枠線になるので、マージンを取る */
+    border-radius: 10px; /* 四隅を丸めて、柔らかい感じにする */
+    padding: 10px; /* 文章の上下に隙間を作る */
+    /* position: relation;  absoluteだと文字数に依存。relationなら親要素のサイズ一杯に広がる */
+    } 
+
+  /* 左画像と名前 */
+.chat_img_left {
+    margin: 0; /* 画面の左端から表示 */
+    float: left; /* 吹き出しが、すぐ横に来るようにする */
+    width: 60px; /* 画像の大きさ */
+    height: 60px;
+    }
+  /* 左画像 */
+.figure_img_left {
+    width: 100%;
+    height: 100%;
+    border: 1px solid #aaa;
+    border-radius: 50%; /* 顔アイコンは丸く縁取るのが流行り */
+    margin: 0;
+    }
+  /* 左画像の下の名前 */
+.figure_img_name_left {
+    padding: 5px 0 0 0; /* 画像と少し離す  */
+    font-size: 10px;  /* 文字を小さく */
+    text-align: center;   /* 文字を中央寄せ */
+    }
+
+.chat-text {
+    position: absolute;
+    bottom: 0;
+}
+
+textarea {
+    resize: none;
+}
+

@@ -9,6 +9,7 @@ use Facades\App\Post;
 use Facades\App\Like;
 use Facades\App\Follow;
 use Facades\App\MessageChannel;
+use Facades\App\Message;
 
 
 
@@ -134,51 +135,93 @@ class exciteCampController extends Controller
         return view('post.gear_list', compact('id_photo'));
     }
 
-    public function sendName(Request $request){
-         // フォローしているユーザーがいるか
-        if($ids= Auth::user()->follow()->value('follow_ids')){
-            // 検索結果取得
-            $key_word = $request->get('name');
-            // $follow_idsを配列にする
-            $follow_ids = explode("," ,$ids);
-            // フォローユーザーを取得
-            $follow_users = User::whereIn('id',$follow_ids)->get();
-            // follow_usersからkey_wordの部分一致のnameを取得(ない場合エラー返す)
-            foreach($follow_users as $follow_user){
-                if($users = $follow_user->where('name', 'like', '%'.$key_word.'%')->get()){
-                    return view('profile.extract_message', ['users'=>$users]);
-                }elseif($users === NULL){
-                    return redirect()->route('extract_message')->with('message', 'そのユーザーはいません');
-                }
-            }
-        }else{
-            return redirect()->route('extract_message')->with('message', 'フォローユーザーがいません');
-        }
-    }
-
+    
     public function directMessage(){
         $channels = MessageChannel::getChannels();
         $message_partners = array();
-
+        
         foreach($channels as $channel){
             if($channel->user_id_1 == Auth::id()){
                 $channel_user = $channel->user_id_2;
             }elseif($channel->user_id_2 == Auth::id()){
                 $channel_user = $channel->user_id_1;
             }
-
+            
             $message_partners[] = User::where('id', $channel_user)->first();
         }
-
+        
         return view('profile.direct_message', ['message_partners'=>$message_partners]);
     }
-
+    
     public function messageContent(Request $request){
-        MessageChannel::statusToggle($request->get('user_id'));
-        $messages = MessageChannel::getMessages($request->get('user_id'));
-
-        return redirect()->route('direct_message')->with(compact('messages'));
+        $user_id = $request->get('user_id');
+        MessageChannel::statusToggle($user_id);
+        $messages = MessageChannel::getMessages($user_id);
+        
+        return redirect()->route('direct_message')->with(compact('user_id','messages'));
         // redirectはsessionとしてviewに渡される view側表示方法注意
     }
+    
+    public function sendMessage(Request $request){
+        Message::setMessage($request->get('message_content'),$request->get('channel_id'));
+        return redirect()->route('direct_message');
+    }
+    
+    /******************************* DM検索機能 ************************************/ 
 
+//     public function nameSeach(Request $request){
+//          // フォローしているユーザーがいるか
+//         if($ids= Auth::user()->follow()->value('follow_ids')){
+//             // 検索結果取得
+//             $key_word = $request->get('name');
+//             // $follow_idsを配列にする
+//             $follow_ids = explode("," ,$ids);
+//             // フォローユーザーを取得
+//             $follow_users = User::whereIn('id',$follow_ids)->get();
+//             // follow_usersからkey_wordの部分一致のnameを取得(ない場合エラー返す)
+//             foreach($follow_users as $follow_user){
+//                 if($user = $follow_user->where('name', 'like', '%'.$key_word.'%')->first()){
+//                     return view('profile.extract_user', ['user'=>$user]);
+//                 }elseif($user === NULL){
+//                     return view('profile.extract_user',['error'=>'そのユーザーはいません']);
+//                 }
+//             }
+//         }else{
+//             return view('profile.extract_user', ['error'=>'フォローユーザーがいません']);
+//         }
+//     }
+
+//     public function extractUser(){
+//         return view('profile.extract_user', ['user'=>NULL]);
+//     }
+
+//     public function newSendMessage(Request $request){
+//         Message::setMessage($request->get('message_content'),$request->get('channel_id'));
+//         return redirect()->route('extract_user');
+//     }
+    
+//     public function newMessageContent(Request $request){
+//         $user_id = $request->get('user_id');
+
+//         if(
+//             MessageChannel::where([
+//                             ['user_id_1', Auth::id()],
+//                             ['user_id_2', $user_id]
+//                             ])->orWhere([
+//                                 ['user_id_1', $user_id],
+//                                 ['user_id_2', Auth::id()]
+//                             ])->exists()
+//             ){
+//                 MessageChannel::statusToggle($user_id);
+//                 $messages = MessageChannel::getMessages($user_id);
+
+//                 return redirect()->route('extract_user')->with(compact('user_id','messages'));
+//             }
+
+//         $messages = NULL;
+
+//         return redirect()->route('extract_user')->with(compact('user_id','messages'));
+//         // redirectはsessionとしてviewに渡される view側表示方法注意
+//     }
+    /************************************************************************************/ 
 }
