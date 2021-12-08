@@ -69,7 +69,7 @@
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
-    </head>
+        </head>
     <header>
         <div class="d-flex flex-row align-items-center">
             <h1 class="app ml-2">
