@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Facades\App\User;
+use Facades\App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\exciteCampRequest;
 use Illuminate\Support\Facades\Auth;
@@ -42,7 +43,10 @@ class AuthController extends Controller
         $credentials = $request->only(['email','password']);
 
         if(Auth::attempt($credentials)){
-            return redirect()->route('top');
+            $camps = Post::where('category', 'camp')->get();
+            $foods = Post::where('category', 'food')->get();
+            $gears = Post::where('category', 'gear')->get();
+            return view('top', compact('camps','foods','gears'));
         }
 
         return redirect()->back()->with('reason','fail');

@@ -4,7 +4,7 @@
 <div>
     @foreach ($id_photo as $photo)
         <a href="{{ route('post_detail',['id' => $photo->id]) }}">
-            <img src="{{ $photo->photo }}" alt="" style="width: 100px">
+            <img src="{{ $photo->photo }}" alt="" width="150px" height="150px">
         </a>
     @endforeach
 </div>

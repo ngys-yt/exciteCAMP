@@ -101,9 +101,18 @@ class exciteCampController extends Controller
             $user = Post::find($id)->user;
             // ログインユーザーのLike()のpost_idsに$idがいるか、存在確認(exists)
             $like = Auth::user()->like()->where('post_ids','like', '%,'.$id.',%')->exists();
-            return view('post.post_detail',compact('post','user','like'));
-        }
+            
+            // ユーザーがいいねしたpost_idがpost_idsにまとめて入っている
+            // $post_ids = Like::pluck('post_ids');
+            // $count = 0;
+            // foreach($post_ids as $post_id){
+            //     if(strpos($post_id, ",$id,") !== false){
+            //         $count++;
+            //     }
+            // }
 
+            return view('post.post_detail', ['post'=>$post], ['user'=>$user], ['like'=>$like]);
+        }
         return redirect()->back();
     }
 

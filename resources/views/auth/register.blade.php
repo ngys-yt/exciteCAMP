@@ -1,3 +1,4 @@
+
 <form action="" method="post">
     @csrf
     <div class="form-group">
@@ -8,5 +9,5 @@
     @enderror
     <input type="submit" value="送信">
 </form>
-
-<a href="{{ route('welcome') }}">戻る</a>
+<a href="{{ route('welcome') }}">戻る</a>       
+    

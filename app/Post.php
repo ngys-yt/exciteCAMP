@@ -48,4 +48,15 @@ class Post extends Model
     public function getGear(){
         return $this->where('category','GEAR')->select('id','photo')->get();
     }
+
+    public function getPost(){
+        $i = Auth::user()->follow()->value('follow_ids');
+        $follow_ids = explode("," ,$i);
+        foreach($follow_ids as $follow_id){
+            if($post = $this->where('user_id', $follow_id)->first()){
+                // dd($post);
+                return $post;
+            }
+        }
+    }
 }

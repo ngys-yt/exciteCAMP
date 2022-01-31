@@ -17,7 +17,8 @@
         <div>タイトル：{{ $post->title }}</div>
         <div>内容：{{ $post->content }}</div>
         <div>
-            いいね
+            
+            {{-- いいね:{{ $i }}件 --}}
             {{-- 自分のページには表示しない、いいね件数実装する --}}
             @if (!($user->id == Auth::id()))
                 @if($like)
