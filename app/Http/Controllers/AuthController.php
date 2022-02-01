@@ -43,10 +43,8 @@ class AuthController extends Controller
         $credentials = $request->only(['email','password']);
 
         if(Auth::attempt($credentials)){
-            $camps = Post::where('category', 'camp')->get();
-            $foods = Post::where('category', 'food')->get();
-            $gears = Post::where('category', 'gear')->get();
-            return view('top', compact('camps','foods','gears'));
+            
+            return redirect()->route('top');
         }
 
         return redirect()->back()->with('reason','fail');

@@ -15,6 +15,14 @@ use Facades\App\Message;
 
 class exciteCampController extends Controller
 {
+    public function top(){
+        $camps = Post::where('category', 'camp')->get();
+        $foods = Post::where('category', 'food')->get();
+        $gears = Post::where('category', 'gear')->get();
+        
+        return view('top',compact('camps','foods','gears'));
+    }
+
     public function createProfile(Request $request){
         // storeメソッド⇨保存先指定
         if($cover = $request->file('cover')){

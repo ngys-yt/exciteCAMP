@@ -30,7 +30,7 @@ Route::post('/login', 'AuthController@login');
 Route::group(['middleware' => ['auth']], function () {
 
     // トップページ
-    Route::view('/top', 'top')->name('top');
+    Route::get('/top', 'exciteCampController@top')->name('top');
 
     // プロフィール
     Route::view('/mypage', 'profile.mypage')->name('mypage');
