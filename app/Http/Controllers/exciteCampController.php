@@ -19,7 +19,7 @@ class exciteCampController extends Controller
         $camps = Post::where('category', 'camp')->get();
         $foods = Post::where('category', 'food')->get();
         $gears = Post::where('category', 'gear')->get();
-        
+
         return view('top',compact('camps','foods','gears'));
     }
 
@@ -119,7 +119,7 @@ class exciteCampController extends Controller
             //     }
             // }
 
-            return view('post.post_detail', ['post'=>$post], ['user'=>$user], ['like'=>$like]);
+            return view('post.post_detail',compact('post','user','like'));
         }
         return redirect()->back();
     }

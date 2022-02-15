@@ -21,7 +21,7 @@
                     <div class="form-group">
                         @csrf
                         都道府県:
-                        <select>
+                        <select id="pref">
                         @foreach(config('pref') as $pref_id => $name)
                             <option value="{{ $pref_id }}">{{ $name }}</option>
                         @endforeach
