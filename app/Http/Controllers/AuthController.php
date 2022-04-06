@@ -3,11 +3,11 @@
 namespace App\Http\Controllers;
 
 use Facades\App\User;
-use Facades\App\Post;
 use Illuminate\Http\Request;
 use App\Http\Requests\exciteCampRequest;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Mail;
+
 
 class AuthController extends Controller
 {
@@ -17,6 +17,20 @@ class AuthController extends Controller
 
         return redirect()->route('register_sent');
     }
+
+    public function contact(Request $request)  //メールの自動送信設定
+    {
+        $email = $request->get('email');
+        
+        Mail::send('auth.emails_text', [], function($data) use ($email){
+                $data   ->to($email)
+                        ->subject('送信メールの表題');
+        });
+
+        return back()->withInput($request->only(['name']))
+                        ->with('sent', '送信完了しました。');  //送信完了を表示
+    }
+
 
     public function verifyToken($token){
         if($user = User::where('token',$token)->first()){

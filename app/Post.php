@@ -54,7 +54,6 @@ class Post extends Model
         $follow_ids = explode("," ,$i);
         foreach($follow_ids as $follow_id){
             if($post = $this->where('user_id', $follow_id)->first()){
-                // dd($post);
                 return $post;
             }
         }

@@ -11,11 +11,13 @@
             <a href="{{ route('logout') }}">ログアウト</a>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">キャンプ</h4>
+                    <h4 class="card-title">CAMP</h4>
                     <p class="card-text">
                         @if ($camps)
                             @foreach ($camps as $camp)
+                            <a href="{{ route('post_detail', ['id'=>$camp->id]) }}">
                                 <img src="{{ $camp->photo }}" alt="" width="100px" height="100px">
+                            </a>
                             @endforeach
                         @endif
                     </p>
@@ -24,11 +26,13 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">ギア</h4>
+                    <h4 class="card-title">GEAR</h4>
                     <p class="card-text">
-                        @if ($foods)
-                            @foreach ($foods as $food)
-                                <img src="{{ $food->photo }}" alt="" width="100px" height="100px">
+                        @if ($gears)
+                            @foreach ($gears as $gear)
+                            <a href="{{ route('post_detail', ['id'=>$gear->id]) }}">
+                                <img src="{{ $gear->photo }}" alt="" width="100px" height="100px">
+                            </a>
                             @endforeach
                         @endif
                     </p>
@@ -37,11 +41,13 @@
             </div>
             <div class="card">
                 <div class="card-body">
-                    <h4 class="card-title">料理</h4>
+                    <h4 class="card-title">FOOD</h4>
                     <p class="card-text">
-                        @if ($gears)
-                            @foreach ($gears as $gear)
-                                <img src="{{ $gear->photo }}" alt="" width="100px" height="100px">
+                        @if ($foods)
+                            @foreach ($foods as $food)
+                            <a href="{{ route('post_detail', ['id'=>$food->id]) }}">
+                                <img src="{{ $food->photo }}" alt="" width="100px" height="100px">
+                            </a>
                             @endforeach
                         @endif
                     </p>
