@@ -36,7 +36,7 @@
                             @endforeach
                         @endif
                     </p>
-                    <a href="{{ route('food_list') }}" class="btn btn-danger">もっと見る</a>
+                    <a href="{{ route('gear_list') }}" class="btn btn-danger">もっと見る</a>
                 </div>
             </div>
             <div class="card">
@@ -51,7 +51,7 @@
                             @endforeach
                         @endif
                     </p>
-                    <a href="{{ route('gear_list') }}" class="btn btn-danger">もっと見る</a>
+                    <a href="{{ route('food_list') }}" class="btn btn-danger">もっと見る</a>
                 </div>
             </div>
         </div>
