@@ -1,6 +1,19 @@
+@if (Session::has('email_exists'))
+    <div>
+        <p>{{ session('email_exists') }}</p>
+    </div>
+@endif
+
+@if (Session::has('name_exists'))
+    <div>
+        <p>{{ session('name_exists') }}</p>
+    </div>
+@endif
+
 @if ( Session::has('sent'))
 <div>
     <p>{{old('name')}}さん、{{ session('sent') }}</p>
+    <p>メール本文からサイトにアクセスしてください。</p>
 </div>
 @endif
 

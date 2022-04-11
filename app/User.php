@@ -82,16 +82,18 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
 
-    public function createUser($email){
+    public function createUser($email,$name){
         $user = new self();
+        $user->name = $name;
         $user->email = $email;
         $user->token = Str::random(50);
         $user->save();
+
+        return $user->token;
     }
 
-    public function register($name,$password){
+    public function register($password){
         $user = session()->get('register_user');
-        $user->name = $name;
         $user->password = Hash::make($password);
         $user->token = null;
         $user->save();

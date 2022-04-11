@@ -4,27 +4,30 @@ namespace App\Http\Controllers;
 
 use Facades\App\User;
 use Illuminate\Http\Request;
-use App\Http\Requests\exciteCampRequest;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 
 
 class AuthController extends Controller
 {
-    public function register(exciteCampRequest $request){
-
-        User::createUser($request->get('email'));
-
-        return redirect()->route('register_sent');
-    }
-
+    
     public function contact(Request $request)  //メールの自動送信設定
     {
         $email = $request->get('email');
-        
-        Mail::send('auth.emails_text', [], function($data) use ($email){
+        $name = $request->get('name');
+
+        if(User::where('email', $email)->exists()){
+            return back()->with('email_exists', '入力したメールアドレスは既に使用されています。');
+        }
+        if(User::where('name', $name)->exists()){
+            return back()->with('name_exists', '入力した名前は既に使用されています。');
+        }
+
+        $token = User::createUser($email, $name);
+
+        Mail::send('auth.emails_text', ["data" => $token], function($data) use ($email){
                 $data   ->to($email)
-                        ->subject('送信メールの表題');
+                        ->subject('【 excite CAMP 】');
         });
 
         return back()->withInput($request->only(['name']))
@@ -44,13 +47,12 @@ class AuthController extends Controller
 
     public function registerMain(Request $request){
         User::register(
-            $request->get('name'),
             $request->get('password')
         );
 
         session()->forget('register_user');
 
-        return redirect()->route('register_complete');
+        return redirect()->route('login');
     }
 
     public function login(Request $request){
@@ -67,6 +69,6 @@ class AuthController extends Controller
     public function logout(){
         Auth::logout();
 
-        return redirect()->to('/');
+        return redirect()->route('welcome');
     }
 }
