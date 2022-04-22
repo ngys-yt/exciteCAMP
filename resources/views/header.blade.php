@@ -63,7 +63,11 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link href="{{ asset('/css/app.css') }}" rel="stylesheet">
+        @if(config('app.env') === 'production')
+            <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
+            @else
+            <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        @endif
         <link href="{{ asset('/css/chat.css') }}" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
         <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
