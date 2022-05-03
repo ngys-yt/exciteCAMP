@@ -52,13 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('profile/message_content', 'exciteCampController@messageContent')->name('message_content');
     Route::post('profile/{id}/get_message', 'exciteCampController@getMessage')->name('get_message');
     Route::post('profile/send_message', 'exciteCampController@sendMessage')->name('send_message');
-    // Route::get('profile/name_seach', 'exciteCampController@nameSeach')->name('name_seach');
-    // Route::post('profile/new_message_content', 'exciteCampController@newMessageContent')->name('new_message_content');
-    // Route::post('profile/new_send_message', 'exciteCampController@newSendMessage')->name('new_send_message');
-    // Route::get('profile/extract_user', 'exciteCampController@extractUser')->name('extract_user');
-
-
-
+    
 
     // 投稿カテゴリー選択
     Route::view('/category', 'category.category')->name('category');
