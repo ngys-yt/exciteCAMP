@@ -2,75 +2,12 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <title>exciteCAMP</title>
-
-        <style>
-            html,body{
-                height: 100%;
-            }
-            
-            header{
-                display: flex;
-                align-items: center;
-                background-color: white;
-                height: 60px;
-            }
-            
-            header a:hover{
-                color: #000 !important;
-                text-decoration: none !important;
-            }
-
-            a:hover{
-                text-decoration: none;
-            }
-
-            .app{
-                margin-right: auto;
-                font-family: 'ヒラギノ丸ゴ Pro W4';
-            }
-
-            .app-name{
-                color: black;
-            }
-
-            .menu-item{
-                padding: 10px;
-            }
-
-            .item-box{
-                display: inline-block;
-                text-align: center;
-                color: black;
-                font-size: 20px;
-            }
-
-            .item{
-                font-size: 5px;
-            }
-
-            .title{
-                height: 400px;
-                background-color:rgb(5, 7, 12);
-            }
-
-            .heart{
-                color: red;
-                border: none;  /* 枠線を消す */
-                outline: none; /* クリックしたときに表示される枠線を消す */
-                background: transparent; /* 背景の灰色を消す */
-            }
-        </style>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        @if(config('app.env') === 'production')
-            <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">
-            @else
-            <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        @endif
-        <link href="{{ asset('/css/chat.css') }}" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@200;600&display=swap" rel="stylesheet">
-        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <link rel="stylesheet" href="{{ asset('/css/header.css') }}">
+        <link rel="stylesheet" href="{{ asset('/css/chat.css') }}">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
         </head>
@@ -115,9 +52,15 @@
                         </div>
                     </a>
                     <a href="{{ route('food_list') }}" class="menu-item">
-                        <div class="item-box mr-2">
+                        <div class="item-box">
                             <i class="fas fa-utensils"></i>
                             <div class="item">FOOD</div>
+                        </div>
+                    </a>
+                    <a href="{{ route('logout') }}" class="menu-item">
+                        <div class="item-box mr-2">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <div class="item">ログアウト</div>
                         </div>
                     </a>
                 </ul>

@@ -1,0 +1,55 @@
+html,body{
+    height: 100%;
+    background-color: rgb(250, 246, 215);
+}
+
+header {
+    display: flex;
+    align-items: center;
+    background-color: rgb(217, 248, 197);
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+}
+
+ul {
+    margin-left: 700px;
+}
+
+header a:hover {
+    color: #000 !important;
+    text-decoration: none !important;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.app-name {
+    color: black;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.menu-item {
+    padding: 10px;
+}
+
+.item-box {
+    text-align: center;
+    display: inline-block;
+    color: black;
+    font-size: 20px;
+}
+
+.item {
+    font-size: 5px;
+}
+
+
+.heart {
+    color: red;
+    border: none;  /* 枠線を消す */
+    outline: none; /* クリックしたときに表示される枠線を消す */
+    background: transparent; /* 背景の灰色を消す */
+}

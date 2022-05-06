@@ -1,0 +1,62 @@
+
+
+.top-img {
+    position: relative;
+    width: 100vw;
+    height: 600px;
+}
+
+.title-fas {
+    position: absolute;
+    transform: rotate(-5deg);
+    top: 80px;
+    left: 30px;
+    color: rgb(246, 122, 6);
+    font-size: 100px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.title {
+    position: absolute;
+    transform: rotate(-5deg);
+    top: 60px;
+    left: 80px;
+    color: rgb(5, 247, 170);
+    font-size: 80px;
+    font-family: 'Varela Round', sans-serif;
+}
+
+.title2 {
+    position: absolute;
+    transform: rotate(6deg);
+    top: 200px;
+    left: 900px;
+    color: aliceblue;
+    font-size: 25px;
+    font-family: "M PLUS Rounded 1c";
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+}
+
+.title2::before,
+.title2::after {
+	content: '';
+	width: 3px;
+	height: 40px;
+	background-color: #3fc1c9;
+}
+
+.title2::before {
+	margin-right: 30px;
+	transform: rotate(-35deg)
+}
+.title2::after {
+	margin-left: 30px;
+	transform: rotate(35deg)
+}
+
+.container-fluid {
+    margin-top: 10px;
+}
