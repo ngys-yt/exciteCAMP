@@ -1,0 +1,89 @@
+html, body {
+    height: 100%;
+}
+
+h2 {
+    position: absolute;
+    top: 20%;
+    left: 42%;
+    background: linear-gradient(transparent 80%, #a7d6ff 80%);
+}
+
+.container-fluid {
+    display: flex;
+    justify-content: center;
+    height: auto;
+    position: absolute;
+    top: 40%;
+}
+
+.category {
+    margin: 30px;
+}
+
+.category button {
+    display: block; /* ブロックレベル表示に */
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+    background: white; /* 背景色を白 */
+    padding:10px;
+    -moz-box-shadow: 0 4px 10px #333; /* 影を落とす */
+    -webkit-box-shadow: 0 4px 10px #333;
+    box-shadow: 0 4px 10px #333;
+}
+
+.camp {
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(249, 226, 150, 0.8); /* 透明度80%で指定 */
+    position: absolute; /* 親要素を基点に配置 */
+    top: 10px;
+    left: 200px;
+    font-size: 100%;
+    font-family: 'Hina2ndGrade'; /*webフォントを使用 */
+    -moz-box-shadow: 0 2px 4px #666; /* ボックスシャドー */
+    -webkit-box-shadow: 0 2px 4px #666;
+    box-shadow: 0 2px 4px #666;
+    -webkit-transform: rotate(-3deg); /* 回転 */
+    -moz-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    z-index: 2;
+    }
+
+.food {
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(249, 226, 150, 0.8); /* 透明度80%で指定 */
+    position: absolute; /* 親要素を基点に配置 */
+    top: 10px;
+    left: 560px;
+    font-size: 100%;
+    font-family: 'Hina2ndGrade'; /* webフォントを使用 */
+    -moz-box-shadow: 0 2px 4px #666; /* ボックスシャドー */
+    -webkit-box-shadow: 0 2px 4px #666;
+    box-shadow: 0 2px 4px #666;
+    -webkit-transform: rotate(-3deg); /* 回転 */
+    -moz-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    z-index: 2;
+}
+
+.gear {
+    margin: 0;
+    padding: 10px;
+    background-color: rgba(249, 226, 150, 0.8); /* 透明度80%で指定 */
+    position: absolute; /* 親要素を基点に配置 */
+    top: 10px;
+    left: 920px;
+    font-size: 100%;
+    font-family: 'Hina2ndGrade'; /* webフォントを使用 */
+    -moz-box-shadow: 0 2px 4px #666; /* ボックスシャドー */
+    -webkit-box-shadow: 0 2px 4px #666;
+    box-shadow: 0 2px 4px #666;
+    -webkit-transform: rotate(-3deg); /* 回転 */
+    -moz-transform: rotate(-3deg);
+    transform: rotate(-3deg);
+    z-index: 2;
+}
+
