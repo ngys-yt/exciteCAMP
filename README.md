@@ -19,7 +19,6 @@
 * 侍エンジニア塾  教材
 * [laravelリファレンス](https://readouble.com/laravel/6.x/ja/requests.html)
 * [Bootstrap](https://www.w3schools.com/bootstrap/default.asp)
-* [DB操作](https://blog.capilano-fw.com/?p=665)
 * キャンプ専用アプリ[CAMPiii](https://campiii.com/)
 
 
