@@ -4,28 +4,31 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="{{ asset('/css/mypage.css') }}">
+        <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
     </head>
     <body>
         @section('mypage')
-        <div>
+        <div style="display: flex;">
             <div class="container">
-                <h1>プロフィール画面</h1>
-                <div>
-                    背景<img src="{{ Auth::user()->cover }}" alt="" style="width: 100px;">
+                <div class="header-img">
+                    @if (Auth::user()->cover===NULL)
+                        <p>exciteCAMP</p>
+                    @else
+                        <img src="{{ Auth::user()->cover }}" alt="背景画像" style="width: 800px;">
+                    @endif
                 </div>
-                <div>
-                    画像<img src="{{ Auth::user()->image }}" alt="" style="width: 100px;">
+                <div class="icon">
+                    @if ( Auth::user()->image===NULL)
+                        <p><i class="fas fa-user"></i></p>
+                    @else
+                        <img src="{{ Auth::user()->image }}" alt="アイコン画像" style="width: 100px;">
+                    @endif
                 </div>
-                <div>
-                    名前:{{ Auth::user()->name }}
+                <div class="name">
+                    {{ Auth::user()->name }}
                 </div>
-                <div>
-                    自己紹介<br>
-                    {!! nl2br(Auth::user()->profile) !!}   
-                    {{-- <br>(特殊文字)をエスケープさせないために !! で囲む --}}
-                    {{-- <br>以外をエスケープさせるために nl2br をつける --}}
-                </div>
-                <div class="item">
+                <div class="sns">
                     <a href="{{ Auth::user()->twitter }}">
                         <i class="fab fa-twitter-square"></i>
                     </a>
@@ -39,16 +42,12 @@
                         <i class="fab fa-youtube"></i>
                     </a>
                 </div>
-                <div>
-                    <a href="{{ route('direct_message') }}">DM</a>
-                    <a href="{{ route('ff_list',['id' => Auth::id()]) }}?1=follow">フォロー</a>
-                    <a href="{{ route('ff_list',['id' => Auth::id()]) }}?2=follower">フォロワー</a>
-                    <a href="{{ route('contact') }}">問い合わせ</a>
-                    <a href="{{ route('create_profile') }}">編集</a>
-                    <a href="{{ route('edit_password') }}">パスワード変更</a>
-                    <a href="{{ route('withdrawal') }}">退会</a>
+                <div class="profile">
+                    {!! nl2br(Auth::user()->profile) !!}   
+                    {{-- <br>(特殊文字)をエスケープさせないために !! で囲む --}}
+                    {{-- <br>以外をエスケープさせるために nl2br をつける --}}
                 </div>
-                <div>
+                <div class="category">
                     {{-- カテゴリー選択ボタン --}}
                     <a href="{{ route('mypage') }}?d=all">全て</a>
                     <a href="{{ route('mypage') }}?c=CAMP">CAMP</a>
@@ -64,19 +63,25 @@
                         }else{
                             $posts = Auth::user()->posts;
                         }
-                    @endphp
+                        @endphp
                     @foreach ($posts as $post)
-                        <a href="{{ route('post_detail', ['id'=>$post->id]) }}">
-                            <img src="{{ $post->photo }}" alt="" style="width: 100px">
-                        </a>
+                    <a href="{{ route('post_detail', ['id'=>$post->id]) }}">
+                        <img src="{{ $post->photo }}" alt="" style="width: 100px">
+                    </a>
                     @endforeach
                 </div>
+            </div>
+            <div class="menu">
+                <a href="{{ route('direct_message') }}">DM</a>
+                <a href="{{ route('ff_list',['id' => Auth::id()]) }}?1=follow">フォロー</a>
+                <a href="{{ route('ff_list',['id' => Auth::id()]) }}?2=follower">フォロワー</a>
+                <a href="{{ route('contact') }}">問い合わせ</a>
+                <a href="{{ route('create_profile') }}">編集</a>
+                <a href="{{ route('edit_password') }}">パスワード変更</a>
+                <a href="{{ route('withdrawal') }}">退会</a>
             </div>
         </div>
         @endsection
     </body>
 </html>
 @extends('header')
-
-
-

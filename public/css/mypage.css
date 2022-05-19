@@ -1,0 +1,61 @@
+.container {
+    padding-top: 70px;
+}
+
+.header-img {
+    position: relative;
+    width: 1000px;
+    height: 250px;
+    border: 3px solid;
+    background: #f4f6f6;
+    width: 100%;
+}
+
+.header-img p {
+    text-align: center;
+    font-size: 100px;
+    color: rgb(103, 103, 103);
+}
+
+.icon {
+    position: absolute;
+    top: 300px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid;
+    background: #f4f6f6;
+    margin-left: 40px;
+}
+
+.icon p {
+    position: absolute;
+    top: 20px;
+    left: 53px;
+    font-size: 100px;
+}
+
+.name {
+    display: inline-block;
+    text-align: left;
+    margin-top: 50px;
+    margin-left: 250px;
+    font-size: 50px;
+}
+
+.sns {
+    text-align: left;
+    margin-left: 250px;
+    font-size: 30px;
+}
+
+.profile {
+    display: inline-block;
+    margin: 20px 150px;
+    font-size: 20px;
+}
+
+.menu {
+    position: absolute;
+    top: 300px;
+}
