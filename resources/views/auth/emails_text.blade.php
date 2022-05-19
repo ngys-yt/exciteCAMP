@@ -11,7 +11,7 @@
         
             <p>下記URLから登録を進めてください。<p>
             
-            <p>http://13.208.235.254//register/verify/{{ $data }}<p>
+            <p>http://excitecamp//register/verify/{{ $data }}<p>
         </div>
     </body>
 </html>
