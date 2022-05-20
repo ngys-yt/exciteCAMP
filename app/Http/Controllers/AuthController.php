@@ -25,13 +25,12 @@ class AuthController extends Controller
 
         $token = User::createUser($email, $name);
 
-        Mail::send('auth.emails_text', ["data" => $token], function($data) use ($email){
-                $data   ->to($email)
+        Mail::send('auth.emails_text', ["token" => $token], function($token) use ($email){
+                $token   ->to($email)
                         ->subject('【 excite CAMP 】');
         });
 
-        return back()->withInput($request->only(['name']))
-                        ->with('sent', '送信完了しました。');  //送信完了を表示
+        return redirect()->route('emails_complete')->withInput($request->only(['name']));
     }
 
 

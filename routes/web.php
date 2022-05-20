@@ -15,13 +15,13 @@ Route::view('/', 'welcome')->name('welcome');
 
 // 会員登録
 Route::view('/register_contact','auth.register_contact')->name('register_contact');
+Route::view('/emails_complete','auth.emails_complete')->name('emails_complete');
 Route::post('/register_contact', 'AuthController@contact');
 Route::view('/register','auth.register')->name('register');
 Route::post('/register', 'AuthController@register');
-Route::get('/register/verify/{token}', 'AuthController@verifyToken');
+Route::get('/register/verify/{token}', 'AuthController@verifyToken')->name('verify');
 Route::view('/register/main','auth.register_main')->name('register_main');
 Route::post('/register/main', 'AuthController@registerMain');
-Route::view('/register/complete','auth.register_complete')->name('register_complete');
 
 // ログイン
 Route::view('/login', 'auth.login')->name('login');

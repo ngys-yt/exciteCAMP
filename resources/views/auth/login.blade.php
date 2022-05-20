@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/login.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
     </head>
@@ -18,7 +18,7 @@
                     <input class="input" type="email" name="email" required>
                     <span class="highlight"></span>
                     <span class="bar"></span>
-                    <label>Mail</label>
+                    <label>Gmail</label>
                 </div>
                 <div class="group2">      
                     <input class="input" type="password" name="password" id="password" required>
@@ -42,17 +42,16 @@
                 {{-- お問合せフォーム --}}
             </p>
         </div>
+        <script>
+            const pwd = document.getElementById('password');
+            const pwdCheck = document.getElementById('password-check');
+            pwdCheck.addEventListener('change', function() {
+                if(pwdCheck.checked) {
+                    pwd.setAttribute('type', 'text');
+                } else {
+                    pwd.setAttribute('type', 'password');
+                }
+            }, false);
+        </script> 
     </body>
 </html>
-
-<script>
-    const pwd = document.getElementById('password');
-    const pwdCheck = document.getElementById('password-check');
-    pwdCheck.addEventListener('change', function() {
-        if(pwdCheck.checked) {
-            pwd.setAttribute('type', 'text');
-        } else {
-            pwd.setAttribute('type', 'password');
-        }
-    }, false);
-</script> 

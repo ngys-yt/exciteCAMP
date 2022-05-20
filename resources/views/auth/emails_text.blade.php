@@ -7,11 +7,11 @@
     </head>
     <body>
         <div>
-            <p>まだ登録は完了していません。<p>
-        
-            <p>下記URLから登録を進めてください。<p>
+            <p>まだ登録は完了していません。</p>
+    
+            <p>下記ページから登録を進めてください。</p>
             
-            <p>https://excitecamp.link/register/verify/{{ $data }}<p>
+            <a href="{{ route('verify',['token' => $token]) }}">{{ $token }}</a>
         </div>
     </body>
 </html>

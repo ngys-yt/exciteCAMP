@@ -2,9 +2,9 @@
 
 /* basic stylings ------------------------------------------ */
 body {
-    background-image: url('/images/lanthanum.png');
+    background-image: url('/images/login.png');
     background-size: 350px 500px;
-    background-position: 20% 80%;
+    background-position: 20% 100%;
     background-repeat: no-repeat;
     background-color: rgb(250, 246, 215);
 }

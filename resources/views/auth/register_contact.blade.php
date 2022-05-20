@@ -4,7 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
-        <link rel="stylesheet" href="{{ asset('css/register.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/register_contact.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
     </head>
@@ -34,13 +34,6 @@
             @if (Session::has('email_exists'))
             <div class="message">
                 <p>{{ session('email_exists') }}</p>
-            </div>
-            @endif
-
-            @if ( Session::has('sent'))
-            <div class="message2">
-                <p>{{old('name')}}さん、{{ session('sent') }}</p>
-                <p>メール本文からサイトにアクセスしてください。</p>
             </div>
             @endif
             
