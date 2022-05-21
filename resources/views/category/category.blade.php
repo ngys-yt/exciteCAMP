@@ -20,7 +20,7 @@
             <!-- Button to Open the Modal -->
             <h3 class="camp">CAMP</h3>
             <button type="button" class="btn" id="camp_show">
-                <img src="/images/category_camp.png" alt="テントと車の写真" height="250px" width="250px">
+                <img src="/images/category_camp.jpg" alt="テントと車の写真" height="250px" width="250px">
             </button>
         </div>
             <!-- The Modal -->
@@ -56,7 +56,7 @@
             <!-- Button to Open the Modal -->
             <h3 class="food">FOOD</h3>
             <button type="button" class="btn" data-toggle="modal" data-target="#cook">
-                <img src="/images/category_food.png" alt="料理の写真" height="250px" width="250px">
+                <img src="/images/category_food.jpg" alt="料理の写真" height="250px" width="250px">
             </button>
             {{-- toggle = 何をするか  target = どの要素を開くか---↑cookというIDをもつモーダルが表示される --}}
         </div>
@@ -101,7 +101,7 @@
             <!-- Button to Open the Modal -->
             <h3 class="gear">GEAR</h3>
             <button type="button" class="btn" data-toggle="modal" data-target="#gear">
-                <img src="/images/category_gear.png" alt="キャンプ道具の写真" height="250px" width="250px">
+                <img src="/images/category_gear.jpg" alt="キャンプ道具の写真" height="250px" width="250px">
             </button>
         </div>
         <!-- The Modal -->

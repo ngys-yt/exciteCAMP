@@ -12,7 +12,7 @@
     @section('top_body')
         @auth
         <div class="top-img">
-            <img src="/images/top.png" alt="焚き火の写真" width="100%" height="600px">
+            <img src="/images/top.jpg" alt="焚き火の写真" width="100%" height="600px">
             <i class="title-fas fas fa-fire"></i>
             <p class="title">exciteCAMP</p>
             <p class="title2">自分のキャンプを自由に表現しよう</p>
