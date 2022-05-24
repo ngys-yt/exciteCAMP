@@ -10,49 +10,69 @@ body a:hover {
     padding-top: 70px;
 }
 
-.header-img {
+.header-img-null {
     position: relative;
-    height: 250px;
+    height: 300px;
+    width: 1200px;
     border: 3px solid;
     background: #f4f6f6;
-    margin: 0px 100px;
+    display: block;
+    margin: 0px auto;
 }
 
-.header-img p {
+.header-img-null p {
     text-align: center;
     font-size: 100px;
     color: rgb(103, 103, 103);
 }
 
-.icon {
+.header-img img {
+    position: relative;
+    height: 330px;
+    width: 1200px;
+    display: block;
+    margin:auto;
+    object-fit: cover;
+}
+
+.icon-null {
     position: absolute;
     top: 300px;
+    left: 100px;
     width: 200px;
     height: 200px;
     border-radius: 50%;
     border: 3px solid;
     background: #f4f6f6;
-    margin-left: 100px;
 }
 
-.icon p {
+.icon-null p {
     position: absolute;
     top: 20px;
     left: 53px;
     font-size: 100px;
 }
 
+.icon-img img {
+    position: absolute;
+    top: 340px;
+    left: 170px;
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+}
+
 .name {
     display: inline-block;
     text-align: left;
-    margin-top: 50px;
-    margin-left: 300px;
+    margin-top: 20px;
+    margin-left: 400px;
     font-size: 50px;
 }
 
 .sns {
     text-align: left;
-    margin-left: 310px;
+    margin-left: 400px;
     font-size: 30px;
 }
 
@@ -76,24 +96,30 @@ body a:hover {
     color: rgb(255, 30, 0);
 }
 
-.container-fluid {
-    display: flex;
-    max-width: 1200px;
-    margin: 10px;
+.null {
+    height: 30px;
 }
 
-.container-body {
-    border: solid;
-    border-color: darkgray;
+.contents{
+    display: flex;
+    max-width: 1250px;
+    margin: auto ;
+}
+
+.contents-body {
     border-width: 3px;
     width: 80%;
-    margin: 10px;
+    margin-top: 10px;
+    margin-right: auto;
 }
 
 .profile {
     display: inline-block;
     margin: 20px 10px;
+    padding: 10px;
     font-size: 20px;
+    border: solid 3px;
+    border-color: darkgray;
 }
 
 .side-menu {
@@ -104,27 +130,48 @@ body a:hover {
     border-color: darkgray;
     border-width: 3px;
     padding: 18px 10px;
-    width: 140px;
-    height: 200px;
+    width: 150px;
+    height: 240px;
     margin-top: 30px;
+}
+
+.side-menu a {
+    color: rgb(48, 47, 47);
+    margin: 3px 0px;
 }
 
 .category {
     text-align: center;
     font-size: 30px;
+    margin: 30px 0px;
 }
 
 .category a {
     margin: 10px;
+    color: rgb(2, 153, 12);
+    border: 2px solid rgb(215, 251, 163);
+    background: rgb(215, 251, 163);
+    border-radius: 5px;
+    padding: 10px;
 }
+
+.category a:hover {
+    color: #fff;
+    background: rgb(2, 153, 12);
+}
+
 
 .post-img {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction:row-reverse; /* 逆順表示 */
-    text-align: center;
+    flex-wrap: wrap-reverse;
+    flex-direction:row-reverse; 
+    text-align: right;
+    margin: 0px 20px;
 }
 
 .post-img img {
     margin: 5px;
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
 }

@@ -34,7 +34,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/top', 'exciteCampController@top')->name('top');
 
     // プロフィール
-    Route::view('/mypage', 'profile.mypage')->name('mypage');
+    Route::get('/mypage', 'exciteCampController@mypage')->name('mypage');
     Route::post('/create/profile', 'exciteCampController@createProfile')->name('create_profile');
     Route::view('/create/profile', 'profile.create_profile');
     Route::post('/profile/detail', 'exciteCampController@sendProfile')->name('send_profile');

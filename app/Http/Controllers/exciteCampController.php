@@ -8,6 +8,7 @@ use Facades\App\User;
 use Facades\App\Post;
 use Facades\App\Like;
 use Facades\App\Follow;
+use Facades\App\Follower;
 use Facades\App\MessageChannel;
 use Facades\App\Message;
 
@@ -55,6 +56,15 @@ class exciteCampController extends Controller
         );
 
         return redirect()->route('mypage');
+    }
+
+    public function mypage(){
+        $id = Auth::id();
+        // フォロー数、フォロワー数を取得した配列をcount()で数える
+        $follow_count = count(Follow::getFollowIds($id));
+        $follower_count = count(Follow::getFollowerIds($id));
+
+        return view('profile.mypage',compact('follow_count','follower_count'));
     }
 
     public function profileDetail($id){
