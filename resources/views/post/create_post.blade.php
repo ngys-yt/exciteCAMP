@@ -1,10 +1,11 @@
 @extends('header')
 
 @section('head')
+    <link rel="stylesheet" href="{{ asset('css/create_post.css') }}">
 @endsection
 
 @section('body') 
-    <div>
+    <div class="main">
         <form action="" method="post" enctype="multipart/form-data">
         @csrf
             <div>

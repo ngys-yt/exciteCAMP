@@ -1,6 +1,7 @@
 html,body{
     height: 100%;
     background-color: rgb(250, 246, 215);
+    padding-top: 30px;
 }
 
 header {
@@ -9,7 +10,9 @@ header {
     background-color: rgb(217, 248, 197);
     height: 60px;
     width: 100%;
-    position: fixed;
+    position: fixed; /* ウィンドウを基準に画面に固定 */
+    top: 0; /* 上下の固定位置を上から0pxにする */
+    left: 0; /* 左右の固定位置を左から0pxにする */
     z-index: 999;
 }
 
