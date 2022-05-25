@@ -11,7 +11,7 @@
 |
 */
 
-Route::view('/', 'welcome')->name('welcome');
+Route::view('/', 'auth.welcome')->name('welcome');
 
 // 会員登録
 Route::view('/register_contact','auth.register_contact')->name('register_contact');
@@ -55,15 +55,16 @@ Route::group(['middleware' => ['auth']], function () {
     
 
     // 投稿カテゴリー選択
-    Route::view('/category', 'category.category')->name('category');
-    Route::view('/map', 'category.map')->name('map');
-    Route::view('/gear', 'category.gear')->name('gear');
-    Route::view('/cook', 'category.cook')->name('cook');
+    
 
     // 投稿作成〜投稿詳細
     Route::get('/create/post', 'exciteCampController@createPost')->name('create_post');
     Route::post('/create/post', 'exciteCampController@sendPost');
     Route::get('/post/{id}/detail', 'exciteCampController@postDetail')->name('post_detail');
+    Route::view('/category', 'post.category')->name('category');
+    Route::view('/category/map', 'post.map')->name('map');
+    Route::view('/category/gear', 'post.gear')->name('gear');
+    Route::view('/category/cook', 'post.cook')->name('cook');
 
     // いいね
     Route::post('/post/like', 'exciteCampController@like')->name('like');

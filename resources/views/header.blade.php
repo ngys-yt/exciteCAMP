@@ -4,13 +4,17 @@
         <title>exciteCAMP</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {{-------- google API ----------}}
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+        {{-------- bootstrap -----------}}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="{{ asset('/css/header.css') }}">
-        <link rel="stylesheet" href="{{ asset('/css/chat.css') }}">
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        {{------- fontawesome ----------}}
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
-        </head>
+        {{------------ css -------------}}
+        <link rel="stylesheet" href="{{ asset('/css/header.css') }}">
+        {{---------------- section ------------------}}
+        @yield('head')
+    </head>
     <header>
         <div class="d-flex flex-row align-items-center">
             <h1 class="app ml-2">
@@ -67,19 +71,7 @@
             </nav>
         </div>
     </header>
-    <body>   
-        @yield('top_body')
-        @yield('create_profile')
-        @yield('edit_profile')
-        @yield('profile_detail')
-        @yield('mypage')
-        @yield('camp_list')
-        @yield('cook_list')
-        @yield('create_post')
-        @yield('post_detail')
-        @yield('gear_list')
-        @yield('category')
-        @yield('direct_message')
-        @yield('extract_user')
+    <body>
+        @yield('body')
     </body>
 </html>
