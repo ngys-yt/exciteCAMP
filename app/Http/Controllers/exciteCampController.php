@@ -17,9 +17,9 @@ use Facades\App\Message;
 class exciteCampController extends Controller
 {
     public function top(){
-        $camps = Post::where('category', 'camp')->get();
-        $foods = Post::where('category', 'food')->get();
-        $gears = Post::where('category', 'gear')->get();
+        $camps = Post::topGetCamps();
+        $foods = Post::topGetfoods();
+        $gears = Post::topGetgears();
 
         return view('top',compact('camps','foods','gears'));
     }

@@ -22,6 +22,30 @@ class Post extends Model
         return $this->hasMany('App\Favorite');
     }
 
+//---------------------------TOPの投稿------------------------------//
+    public function topGetCamps(){
+        return $this->where('category','CAMP')
+                    ->orderBy('id','desc')
+                    ->select('id','photo')
+                    ->take(6)
+                    ->get();
+    }
+    public function topGetFoods(){
+        return $this->where('category','FOOD')
+                    ->orderBy('id','desc')
+                    ->select('id','photo')
+                    ->take(6)
+                    ->get();
+    }
+    public function topGetgears(){
+        return $this->where('category','GEAR')
+                    ->orderBy('id','desc')
+                    ->select('id','photo')
+                    ->take(6)
+                    ->get();
+    }
+//------------------------------------------------------------------//  
+
     public function sendPost($photo,$category,$kind_1,$kind_2,$title,$content){
         $post = new self();
         $post->user_id = Auth::id();
@@ -37,6 +61,7 @@ class Post extends Model
         // 投稿を作ったタイミングでそのIDを取得⇨パラメーターとして送る
     }
 
+//---------------------------------- 投稿一覧 ---------------------------------//
     public function getCamp(){
         return $this->where('category','CAMP')->select('id','photo')->get();
     }
@@ -48,6 +73,7 @@ class Post extends Model
     public function getGear(){
         return $this->where('category','GEAR')->select('id','photo')->get();
     }
+//--------------------------------------------------------------------------------// 
 
     public function getPost(){
         $i = Auth::user()->follow()->value('follow_ids');
