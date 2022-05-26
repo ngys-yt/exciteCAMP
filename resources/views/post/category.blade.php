@@ -67,24 +67,19 @@
                     </div>
             <!-- Modal body -->
                     <div class="modal-body">
-                        <form action="{{ route('create_post') }}" method="get">
+                        <form action="{{ route('create_post') }}" method="get" class="needs-validation" novalidate>
                             @csrf
                             <div class="form-group">
                                 <input type="hidden" name="category" value="FOOD">
-                                料理名：<input type="text" name="kind_1">
-                                @error('kind_1')
-                                <li>{{$message}}</li>
-                                @enderror
+                                <input type="text" name="kind_1" class="form-control" placeholder="料理名" required>
+                                <div class="valid-feedback">OK.</div>
+                                <div class="invalid-feedback">必須項目です</div>
                             </div>
                             <div class="form-group">
-                                アイテム名：
-                                <select name="kind_2">
-                                    @foreach(config('cook') as $cook_id => $name)
-                                        <option value="{{ $name }}">{{ $name }}</option>
-                                    @endforeach
-                                </select>
+                                <input type="text" name="kind_2" class="form-control" placeholder="アイテム名" required>
+                                <div class="valid-feedback">OK.</div>
+                                <div class="invalid-feedback">必須項目です</div>
                             </div>
-                            
                             <input type="submit" value="決定">
                         </form>
                     </div>
@@ -110,20 +105,18 @@
                     </div>
             <!-- Modal body -->
                     <div class="modal-body">
-                        <form action="{{ route('create_post') }}" method="get">
+                        <form action="{{ route('create_post') }}" method="get" class="needs-validation" novalidate>
                             @csrf
                             <div class="form-group">
                                 <input type="hidden" name="category" value="GEAR">
-                                ブランド名：<input type="text" name="kind_1">
-                                @error('kind_1')
-                                <li>{{$message}}</li>
-                                @enderror
+                                <input type="text" name="kind_1" class="form-control" placeholder="ブランド名" required>
+                                <div class="valid-feedback">OK.</div>
+                                <div class="invalid-feedback">必須項目です</div>
                             </div>
                             <div class="form-group">
-                                アイテム名：<input type="text" name="kind_2">
-                                @error('kind_2')
-                                <li>{{$message}}</li>
-                                @enderror
+                                <input type="text" name="kind_2" class="form-control" placeholder="アイテム名" required>
+                                <div class="valid-feedback">OK.</div>
+                                <div class="invalid-feedback">必須項目です</div>
                             </div>
                             <input type="submit" value="決定">
                         </form>
@@ -132,7 +125,35 @@
             </div>
         </div>
     </div>
-    {{-- googleMap modal表示 --}}
+
+    {{----------------- googleMap modal表示 ----------------------}}
     <script src="{{ asset('/js/map.js') }}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZCYYOoFZOIseoW_YfdYcX5TIupEPAzI&callback=initMap"></script>
+
+    {{------------------ modal validation ------------------------}}
+    <script>
+        (function() {
+            // 厳格モード
+            'use strict';
+                // load ページの読み込みが完了した時
+                window.addEventListener('load', function() {
+                // className 取得
+                const forms = document.getElementsByClassName('needs-validation');
+                const validation = Array.prototype.filter.call(forms, function(form) {
+                    // submitイベントでバリデーションを実行する
+                    form.addEventListener('submit', function(event) {
+                    // バリデーションを実行する
+                    if (form.checkValidity() === false) {
+                        // バリデーション失敗時にsubmitイベントを停止させる
+                        event.preventDefault();
+                        event.stopPropagation();
+                    }
+                    // バリデーション終了のCSSクラスを追加する
+                    form.classList.add('was-validated');
+                    }, false);
+                });
+            }, false);
+        })();
+    </script>
+
 @endsection

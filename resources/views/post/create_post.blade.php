@@ -8,17 +8,30 @@
     <div class="main">
         <form action="" method="post" enctype="multipart/form-data">
         @csrf
-            <div>
-                カテゴリー：{{$category}}
-                <input type="hidden" name="category" value="{{$category}}">
-            </div>
-            <div>
-                料理名：{{$kind_1}}
-                <input type="hidden" name="kind_1" value="{{$kind_1}}">
-            </div>
-            <div>
-                使用アイテム：{{$kind_2}}
-                <input type="hidden" name="kind_2" value="{{$kind_2}}">
+            <div class="category-detail">
+                <div>
+                    カテゴリー：{{$category}}
+                    <input type="hidden" name="category" value="{{$category}}">
+                </div>
+                @if ($category == 'FOOD')
+                    <div>
+                        料理名：{{$kind_1}}
+                        <input type="hidden" name="kind_1" value="{{$kind_1}}">
+                    </div>
+                    <div>
+                        使用アイテム：{{$kind_2}}
+                        <input type="hidden" name="kind_2" value="{{$kind_2}}">
+                    </div>
+                @elseif($category == 'GEAR')
+                    <div>
+                        ブランド：{{$kind_1}}
+                        <input type="hidden" name="kind_1" value="{{$kind_1}}">
+                    </div>
+                    <div>
+                        アイテム：{{$kind_2}}
+                        <input type="hidden" name="kind_2" value="{{$kind_2}}">
+                    </div>
+                @endif
             </div>
             <div class="form-group">
                 photo

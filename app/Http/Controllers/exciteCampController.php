@@ -16,6 +16,7 @@ use Facades\App\Message;
 
 class exciteCampController extends Controller
 {
+
     public function top(){
         $camps = Post::topGetCamps();
         $foods = Post::topGetfoods();
@@ -90,6 +91,7 @@ class exciteCampController extends Controller
         $category = $request->get('category');
         $kind_1 = $request->get('kind_1');
         $kind_2 = $request->get('kind_2');
+
         return view('post.create_post',compact('category','kind_1','kind_2'));
     }
 
