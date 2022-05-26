@@ -46,15 +46,29 @@ class Post extends Model
     }
 //------------------------------------------------------------------//  
 
-    public function sendPost($photo,$category,$kind_1,$kind_2,$title,$content){
+    public function sendPost($files,$category,$kind_1,$kind_2,$title,$content){
         $post = new self();
         $post->user_id = Auth::id();
-        $post->photo = $photo;
         $post->category = $category;
         $post->kind_1 = $kind_1;
         $post->kind_2 = $kind_2;
         $post->title = $title;
         $post->content = $content;
+
+        foreach ($files as $photos){
+            $photo = $photos['photo']->store('public/post_photo');
+            $photo = str_replace('public','/storage',$photo);
+
+            if ($photo === array_key_first($files)){
+                // １周目の処理
+                $post->photo ="$photo,";
+            }else{
+                // ２周目以降
+                // 文字列の結合 コンマに注意
+                $post->photo .= "$photo,";
+            }
+        }
+        
         $post->save();
 
         return $post->id;

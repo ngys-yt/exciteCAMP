@@ -96,8 +96,7 @@ class exciteCampController extends Controller
     }
 
     public function sendPost(Request $request){
-        $photo = $request->file('photo')->store('public/post_photo');
-        $photo = str_replace('public','/storage',$photo);
+        $files = $request->file('files');
         $category = $request->get('category');
         $kind_1 = $request->get('kind_1');
         $kind_2 = $request->get('kind_2');
@@ -105,7 +104,7 @@ class exciteCampController extends Controller
         $content = $request->get('content');
 
         $id = Post::sendPost(
-            $photo,
+            $files,
             $category,
             $kind_1,
             $kind_2,
