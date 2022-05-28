@@ -1,3 +1,39 @@
 .main {
     text-align: center;
 }
+
+.main a {
+    display       : inline-block;
+    font-size     : 12pt;        /* 文字サイズ */
+    text-align    : center;      /* 文字位置   */
+    cursor        : pointer;     /* カーソル   */
+    padding       : 5px;   /* 余白       */
+    background    : #ecebeb;     /* 背景色     */
+    color         : #000000;     /* 文字色     */
+    line-height   : 19px;         /* 1行の高さ  */
+    border: solid 1px;
+    border-color: #9c9c9c;
+    border-radius: 5%;
+    margin-right: 100px;
+}
+
+.category-detail {
+    display: flex;
+}
+
+.category-detail div {
+    width: 34%;
+    margin: 30px 0px;
+}
+
+.category {
+    font-size: 40px;
+}
+
+.kind_1 {
+    font-size: 40px;
+}
+
+.kind_2 {
+    font-size: 40px;
+}
