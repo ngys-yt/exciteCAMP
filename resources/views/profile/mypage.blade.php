@@ -8,7 +8,7 @@
 @section('body')
     <div class="main">
         <div>
-            @if (Auth::user()->cover===NULL)
+            @if (Auth::user()->cover === NULL)
             <div class="header-img-null">
                 <p>exciteCAMP</p>
             </div>
@@ -19,7 +19,7 @@
             @endif
         </div>
         <div>
-            @if ( Auth::user()->image===NULL )
+            @if (Auth::user()->image === NULL)
             <div class="icon-null">
                 <p><i class="fas fa-user"></i></p>
             </div>
@@ -32,39 +32,28 @@
         <div class="name">
             {{ Auth::user()->name }}
         </div>
-        @if (
-                Auth::user()->twitter===!NULL ||
-                Auth::user()->instagram===!NULL ||
-                Auth::user()->facebook===!NULL ||
-                Auth::user()->youtube===!NULL
-            )
-            <div class="sns">
-                @if (Auth::user()->twitter===!NULL)
-                    <a href="{{ Auth::user()->twitter }}">
-                        <i class="twitter fab fa-twitter-square"></i>
-                    </a>
-                @endif
-                @if (Auth::user()->instagram===!NULL)
-                    <a href="{{ Auth::user()->instagram }}">
-                        <i class="instagram fab fa-instagram-square"></i>
-                    </a>
-                @endif
-                @if (Auth::user()->facebook===!NULL)
-                    <a href="{{ Auth::user()->facebook }}">
-                        <i class="facebook fab fa-facebook-square"></i>
-                    </a>
-                @endif
-                @if (Auth::user()->youtube===!NULL)
-                    <a href="{{ Auth::user()->youtube }}">
-                        <i class="youtube fab fa-youtube"></i>
-                    </a>
-                @endif
-            </div>
-        @else
-            <div class="null">
-                {{-- 空白 --}}
-            </div>
-        @endif
+        <div class="sns">
+            @if (isset(Auth::user()->twitter))
+                <a href="{{ Auth::user()->twitter }}">
+                    <i class="twitter fab fa-twitter-square"></i>
+                </a>
+            @endif
+            @if (isset(Auth::user()->instagram))
+                <a href="{{ Auth::user()->instagram }}">
+                    <i class="instagram fab fa-instagram-square"></i>
+                </a>
+            @endif
+            @if (isset(Auth::user()->facebook))
+                <a href="{{ Auth::user()->facebook }}">
+                    <i class="facebook fab fa-facebook-square"></i>
+                </a>
+            @endif
+            @if (isset(Auth::user()->youtube))
+                <a href="{{ Auth::user()->youtube }}">
+                    <i class="youtube fab fa-youtube"></i>
+                </a>
+            @endif
+        </div>
     </div>
     <div class="contents">
         <div class="side-menu">
