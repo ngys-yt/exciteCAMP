@@ -90,7 +90,10 @@
                 @endphp
                 @foreach ($posts as $post)
                 <a href="{{ route('post_detail', ['id'=>$post->id]) }}">
-                    <img src="{{ $post->photo }}" alt="投稿画像">
+                    @php
+                        $photos = explode("," ,$post->photo);//photoを配列に変換
+                    @endphp 
+                    <img src="{{ $photos[0] }}" alt="投稿画像">
                 </a>
                 @endforeach
             </div>
