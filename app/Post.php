@@ -54,25 +54,26 @@ class Post extends Model
         $post->kind_2 = $kind_2;
         $post->title = $title;
         $post->content = $content;
-
-        foreach ($files as $photos){
-            $photo = $photos['photo']->store('public/post_photo');
-            $photo = str_replace('public','/storage',$photo);
-
-            if ($photo === array_key_first($files)){
-                // １周目の処理
-                $post->photo ="$photo,";
+        
+        foreach ($files as $index=>$photo){
+            // 画像保存
+            $photo_path = $photo['photo']->store('public/post_photo');
+            $photo_path = str_replace('public','/storage',$photo_path);
+            
+            // １周目の処理
+            if ($index === array_key_first($files)){
+                $post->photo = "$photo_path";
             }else{
-                // ２周目以降
-                // 文字列の結合 コンマに注意
-                $post->photo .= "$photo,";
+                // ２周目以降の処理
+                // 文字列の結合
+                $post->photo .= ",$photo_path";
             }
         }
-        
-        $post->save();
 
-        return $post->id;
+        $post->save();
+        
         // 投稿を作ったタイミングでそのIDを取得⇨パラメーターとして送る
+        return $post->id;
     }
 
 //---------------------------------- 投稿一覧 ---------------------------------//

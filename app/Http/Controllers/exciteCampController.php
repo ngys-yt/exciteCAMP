@@ -111,13 +111,15 @@ class exciteCampController extends Controller
             $title,
             $content
         );
-
+        
         return redirect()->route('post_detail', ['id' => $id]); // [] パラメーター
     }
 
     public function postDetail($id){
         if($post = Post::find($id)){
-            $user = Post::find($id)->user;
+            $user = $post->user;
+
+            // いいね機能
             // ログインユーザーのLike()のpost_idsに$idがいるか、存在確認(exists)
             $like = Auth::user()->like()->where('post_ids','like', '%,'.$id.',%')->exists();
             
@@ -130,7 +132,10 @@ class exciteCampController extends Controller
             //     }
             // }
 
-            return view('post.post_detail',compact('post','user','like'));
+            //photoを配列に変換
+            $photos = explode("," ,$post->photo);
+
+            return view('post.post_detail',compact('post','user','like','photos'));
         }
         return redirect()->back();
     }

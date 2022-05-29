@@ -1,0 +1,44 @@
+.contents {
+    text-align: center;
+}
+
+.post img {
+    margin: 5px;
+    width: 310px;
+    height: 310px;
+    object-fit: cover;
+}
+
+/************ 画像切り替え矢印 ***************/
+.arrow {
+    position: relative;
+    font-size: 15px;
+}
+
+.arrow::before {
+    position: absolute;
+    content: "";
+    vertical-align: middle;
+}
+
+.arrow-left::before, .arrow-right::before {
+    left: 0px;
+    top: 0px;
+    width: 15px;
+    height: 15px;
+    opacity: 0.65;
+}
+
+.arrow-left::before{
+    left: -20px;
+    border-top: 4px solid #626161;
+    border-left: 4px solid #626161;
+    transform: rotate(315deg);
+}
+
+.arrow-right::before{
+    left: 3px;
+    border-top: 4px solid #626161;
+    border-right: 4px solid #626161;
+    transform: rotate(45deg);
+}
