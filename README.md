@@ -2,7 +2,7 @@
 キャンプ専用のSNSを作成しました。
 キャンプ場の検索、投稿ができるアプリです。
 
-[WF](https://docs.google.com/presentation/d/1QfBhtwhNY7QdUkE0HdfwP3mfHr6NPh0c-Zdbb_U5llw/edit?usp=sharing)/
+[WF](https://docs.google.com/presentation/d/1QfBhtwhNY7QdUkE0HdfwP3mfHr6NPh0c-Zdbb_U5llw/edit?usp=sharing)　/　
 [DB設計](https://drive.google.com/file/d/1eNJbV7qZhDDmM9zTghluvUTwDuYlMCeO/view?usp=sharing)
 
 
