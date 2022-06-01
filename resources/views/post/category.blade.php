@@ -29,19 +29,28 @@
                     </div>
             <!-- Modal body -->
                     <div class="modal-body">
-                        <div class="form-group">
+                        <form method="get" class="needs-validation" novalidate>
                             @csrf
-                            都道府県:
-                            <select id="pref">
-                            @foreach(config('pref') as $pref_id => $name)
-                                <option value="{{ $pref_id }}">{{ $name }}</option>
-                            @endforeach
-                            </select>
-                            <input type="text" id="keyword" autocomplete="off"><button id="search">検索実行</button>
-                            <button id="clear">結果クリア</button>
+                            <div class="form-group">
+                                都道府県:
+                                <select required>
+                                @foreach(config('pref') as $pref_id => $name)
+                                    <option value="">選択してください</option>
+                                    <option value="{{ $pref_id }}">{{ $name }}</option>
+                                @endforeach
+                                </select>
+                                <div class="valid-feedback">OK.</div>
+                                <div class="invalid-feedback">必須項目です</div>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="keyword" autocomplete="off" placeholder="キャンプ場" required>
+                                <button type="button" id="search">検索実行</button>
+                                <div class="valid-feedback">OK.</div>
+                                <div class="invalid-feedback">必須項目です</div>
+                            </div>
                             <div id="map" style="width: 100%; height: 600px;"></div>
-                        </div>
-                        <input type="submit" value="決定">
+                            <button id="submit">決定</button>
+                        </form>    
                     </div>
                 </div>
             </div>
