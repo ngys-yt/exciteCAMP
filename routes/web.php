@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
     Route::post('profile/message_content', 'exciteCampController@messageContent')->name('message_content');
     Route::post('profile/{id}/get_message', 'exciteCampController@getMessage')->name('get_message');
     Route::post('profile/send_message', 'exciteCampController@sendMessage')->name('send_message');
-    
+
     // 投稿作成〜投稿詳細
     Route::get('/create/post', 'exciteCampController@createPost')->name('create_post');
     Route::post('/create/post', 'exciteCampController@sendPost');

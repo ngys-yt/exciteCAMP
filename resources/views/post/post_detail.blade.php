@@ -21,11 +21,25 @@
             <a id="right" style="display: inline" href="#" class="arrow arrow-right" onclick="goForward()"></a>
         @endif
         </div>
-        <div>カテゴリー：{{ $post->category }}</div>
-        <div>料理名：{{ $post->kind_1 }}</div>
-        <div>使用アイテム：{{ $post->kind_2 }}</div>
-        <div>タイトル：{{ $post->title }}</div>
-        <div>内容：{{ $post->content }}</div>
+        @if ($post->category == 'CAMP')
+            <div>カテゴリー：{{ $post->category }}</div>
+            <div>エリア：{{ $post->kind_1 }}</div>
+            <div>キャンプ場：{{ $post->kind_2 }}</div>
+            <div>タイトル：{{ $post->title }}</div>
+            <div>内容：{{ $post->content }}</div>
+        @elseif ($post->category == 'FOOD')
+            <div>カテゴリー：{{ $post->category }}</div>
+            <div>料理名：{{ $post->kind_1 }}</div>
+            <div>使用アイテム：{{ $post->kind_2 }}</div>
+            <div>タイトル：{{ $post->title }}</div>
+            <div>内容：{{ $post->content }}</div>
+        @elseif ($post->category == 'GEAR')
+            <div>カテゴリー：{{ $post->category }}</div>
+            <div>ブランド名：{{ $post->kind_1 }}</div>
+            <div>アイテム名：{{ $post->kind_2 }}</div>
+            <div>タイトル：{{ $post->title }}</div>
+            <div>内容：{{ $post->content }}</div>
+        @endif
         <div>
             {{-- いいね:{{ $i }}件 --}}
             {{-- 自分のページには表示しない、いいね件数実装する --}}

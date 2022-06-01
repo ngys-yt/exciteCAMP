@@ -11,27 +11,38 @@
             <div class="category-detail">
                 <div>
                     <p>カテゴリー</p>
-                    <p class="category">{{$category}}</p>
+                    <p class="category">{{ $category }}</p>
                     <input type="hidden" name="category" value="{{$category}}">
                 </div>
-                @if ($category == 'FOOD')
+                @if ( $category == 'CAMP' )
+                    <div>
+                        <p>エリア</p>
+                        <p class="kind_1">{{ $kind_1 }}</p>
+                        <input type="hidden" name="kind_1" value="{{$kind_1}}">
+                    </div>
+                    <div>
+                        <p>キャンプ場</p>
+                        <p class="kind_2">{{ $kind_2 }}</p>
+                        <input type="hidden" name="kind_2" value="{{$kind_2}}">
+                    </div>
+                @elseif ( $category == 'FOOD' )
                     <div>
                         <p>料理名</p>
-                        <p class="kind_1">{{$kind_1}}</p>
+                        <p class="kind_1">{{ $kind_1 }}</p>
                         <input type="hidden" name="kind_1" value="{{$kind_1}}">
                     </div>
                     <div>
                         <p>使用アイテム</p>
-                        <p class="kind_2">{{$kind_2}}</p>
+                        <p class="kind_2">{{ $kind_2 }}</p>
                         <input type="hidden" name="kind_2" value="{{$kind_2}}">
                     </div>
-                @elseif($category == 'GEAR')
+                @elseif ( $category == 'GEAR' )
                     <div class="kind_1">
-                        ブランド：{{$kind_1}}
+                        ブランド：{{ $kind_1 }}
                         <input type="hidden" name="kind_1" value="{{$kind_1}}">
                     </div>
                     <div class="kind_2">
-                        アイテム：{{$kind_2}}
+                        アイテム：{{ $kind_2 }}
                         <input type="hidden" name="kind_2" value="{{$kind_2}}">
                     </div>
                 @endif

@@ -29,28 +29,29 @@
                     </div>
             <!-- Modal body -->
                     <div class="modal-body">
-                        <form method="get" class="needs-validation" novalidate>
+                        <form action="{{ route('create_post') }}" method="get" class="needs-validation" novalidate>
                             @csrf
                             <div class="form-group">
+                                <input type="hidden" name="category" value="CAMP">
                                 都道府県:
-                                <select required>
-                                @foreach(config('pref') as $pref_id => $name)
+                                <select name="kind_1" required>
                                     <option value="">選択してください</option>
-                                    <option value="{{ $pref_id }}">{{ $name }}</option>
+                                @foreach(config('pref') as $pref_id => $name)
+                                    <option value="{{ $name }}">{{ $name }}</option>
                                 @endforeach
                                 </select>
                                 <div class="valid-feedback">OK.</div>
                                 <div class="invalid-feedback">必須項目です</div>
                             </div>
                             <div class="form-group">
-                                <input type="text" id="keyword" autocomplete="off" placeholder="キャンプ場" required>
+                                <input name="kind_2" type="text" id="keyword" autocomplete="off" placeholder="キャンプ場" required>
                                 <button type="button" id="search">検索実行</button>
                                 <div class="valid-feedback">OK.</div>
                                 <div class="invalid-feedback">必須項目です</div>
                             </div>
-                            <div id="map" style="width: 100%; height: 600px;"></div>
-                            <button id="submit">決定</button>
-                        </form>    
+                            <div id="map" style="width: 100%; height: 500px;"></div>
+                            <button type="submit">決定</button>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -138,6 +139,7 @@
     {{----------------- googleMap modal表示 ----------------------}}
     <script src="{{ asset('/js/map.js') }}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZCYYOoFZOIseoW_YfdYcX5TIupEPAzI&callback=initMap"></script>
+
 
     {{------------------ modal validation ------------------------}}
     <script>

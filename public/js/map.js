@@ -80,7 +80,6 @@ function markerEvent() {
     });
 }
 
-
 // mapを開く
 $('#camp_show').on('click', function() {
     $('#camp').modal('show');
