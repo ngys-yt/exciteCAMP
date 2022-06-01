@@ -1,8 +1,12 @@
-.main {
-    text-align: center;
+html {
+    height: max-content;
 }
 
-.main a {
+.contents {
+    margin: 20px 200px;
+}
+
+.contents a {
     display       : inline-block;
     font-size     : 12pt;        /* 文字サイズ */
     text-align    : center;      /* 文字位置   */
@@ -18,26 +22,11 @@
 }
 
 .submit {
+    margin-left: 100px;
     padding: 0px 30px;
 }
 
-.category-detail {
-    display: flex;
-}
-
-.category-detail div {
-    width: 34%;
-    margin: 30px 0px;
-}
-
-.category {
-    font-size: 40px;
-}
-
-.kind_1 {
-    font-size: 40px;
-}
-
-.kind_2 {
-    font-size: 40px;
+.button {
+    text-align: center;
+    margin: 30px 0px 50px 0px;
 }

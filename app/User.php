@@ -104,12 +104,42 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->save();
     }
 
+    //-----------------------------------プロフィール編集-------------------------------------// 
     public function createProfile($cover,$image,$name,$profile,$twitter,$instagram,$facebook,$youtube){
+
         // ログインしているユーザーのレコード取得
         $user = Auth::user(); 
+        // storeメソッド⇨保存先指定
+        // cover保存
+        if(isset($cover)){
+            $cover = $cover->store('public/profile_cover');
+            $cover = str_replace('public','/storage',$cover);  // $cover内 の /public を /storage に置換
+            $user->cover = $cover; // DB上書き
+        }else{
+            // coverがnullで来たとき
+            // DBに画像があれば処理なし。なければNULLを保存。
+            if(isset($user->cover)){
+                ;
+            }else{
+                $user->cover = NULL;
+            }
+        }
+        // image保存
+        if(isset($image)){
+            $image = $image->store('public/profile_image');
+            $image = str_replace('public','/storage',$image);  // $image の /public を /storage に置換
+            $user->image = $image; // DB上書き
+        }else{
+            // imageがnullで来たとき 
+            // DBに画像があれば処理なし。なければNULLを保存。
+            if(isset($user->image)){
+                ;
+            }else{
+                $user->image = NULL;
+            }
+        }
+        
         // 各カラムに入力
-        $user->cover = $cover;
-        $user->image = $image;
         $user->name = $name;
         $user->profile = $profile;
         $user->twitter = $twitter;
@@ -118,6 +148,7 @@ class User extends Authenticatable implements MustVerifyEmail
         $user->youtube = $youtube;
         $user->save();
     }
+    //------------------------------------------------------------------------------------------// 
 
     public function getProfile($id){
         $user = $this->find($id);
