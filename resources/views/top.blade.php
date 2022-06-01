@@ -22,7 +22,10 @@
                     @if ($camps)
                         @foreach ($camps as $camp)
                         <a href="{{ route('post_detail', ['id'=>$camp->id]) }}">
-                            <img src="{{ $camp->photo }}" alt="" width="150px" height="150px">
+                            @php
+                                $camp_arr = explode("," ,$camp->photo);
+                            @endphp 
+                            <img src="{{ $camp_arr[0] }}" alt="投稿画像" width="150px" height="150px">
                         </a>
                         @endforeach
                     @endif
@@ -37,7 +40,10 @@
                     @if ($gears)
                         @foreach ($gears as $gear)
                         <a href="{{ route('post_detail', ['id'=>$gear->id]) }}">
-                            <img src="{{ $gear->photo }}" alt="" width="150px" height="150px">
+                            @php
+                                $gear_arr = explode("," ,$gear->photo);
+                            @endphp 
+                            <img src="{{ $gear_arr[0] }}" alt="投稿画像" width="150px" height="150px">
                         </a>
                         @endforeach
                     @endif
@@ -52,7 +58,10 @@
                     @if ($foods)
                         @foreach ($foods as $food)
                         <a href="{{ route('post_detail', ['id'=>$food->id]) }}">
-                            <img src="{{ $food->photo }}" alt="" width="150px" height="150px">
+                            @php
+                                $food_arr = explode("," ,$food->photo);
+                            @endphp 
+                            <img src="{{ $food_arr[0] }}" alt="投稿画像" width="150px" height="150px">
                         </a>
                         @endforeach
                     @endif
