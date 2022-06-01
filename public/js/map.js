@@ -1,6 +1,5 @@
-    // （to do）既にMAPが表示されているモーダルをクリックで開く
-    var map;
-    var marker;
+    let map;
+    let marker;
       // map表示
     function initMap() {
         // 座標の初期設定(中心)
@@ -13,27 +12,29 @@
           // 検索実行ボタンが押されたとき
         document.getElementById('search').addEventListener('click', function() {
     
-            var place = document.getElementById('keyword').value;
-            var geocoder = new google.maps.Geocoder();      // geocoderのコンストラクタ
+            const place = document.getElementById('keyword').value;
+            const geocoder = new google.maps.Geocoder();      // geocoderのコンストラクタ
     
-            geocoder.geocode({
-            address: place // 入力した地名
-            }, function(results, status) {
-                if (status == 'OK') {
+            geocoder.geocode({address: place}, function(results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
     
-                    var bounds = new google.maps.LatLngBounds();
+                    // 変換に成功したら
+            // あらかじめ作ったmapインスタンスの中心緯度経度を設定
+            map.setCenter(results[0].geometry.location);
+            // 中心にマーカーを設定
+            new google.maps.Marker({
+                map: map,
+                position: results[0].geometry.location,
+            });
     
-                    for (var i in results) {
+                    for (const i in results) {
                         if (results[0].geometry) {
                         // 緯度経度を取得
-                            var latlng = results[0].geometry.location;
+                            const latlng = results[0].geometry.location;
                         // 住所を取得
-                            var address = results[0].formatted_address;
-                        // 検索結果地が含まれるように範囲を拡大
-                            bounds.extend(latlng);
-                        // マーカーのセット
-                            setMarker(latlng);
+                            const address = results[0].formatted_address;
                         // マーカーへの吹き出しの追加
+                            setMarker(latlng);
                             setInfoW(place, latlng, address);
                         // マーカーにクリックイベントを追加
                             markerEvent();
@@ -84,23 +85,9 @@ function markerEvent() {
         infoWindow.open(map, marker);
     });
 }
-    
-        $('#camp_show').on('click', function() {
-            $('#camp').modal('show');
-        });
-        
-        // $("#camp").on("shown.bs.modal", function () {
-        //     // #mapにmapを表示
-        //     function initMap() {
-        //         // 座標の初期設定(中心)
-        //         const myLatLng = { lat: 34.69139, lng: 135.18306 };
-        //         map = new google.maps.Map(document.getElementById("map"), {
-        //         zoom: 8,
-        //         center: myLatLng,
-        //         });
-    
-        //         console.log(map);
-        //     };
-        // });
 
-        
+
+// mapを開く
+$('#camp_show').on('click', function() {
+    $('#camp').modal('show');
+});
