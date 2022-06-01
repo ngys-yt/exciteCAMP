@@ -78,13 +78,14 @@ class exciteCampController extends Controller
     }
 
     public function sendPost(Request $request){
+        
         $files = $request->file('files');
         $category = $request->get('category');
         $kind_1 = $request->get('kind_1');
         $kind_2 = $request->get('kind_2');
         $title = $request->get('title');
         $content = $request->get('content');
-
+        
         $id = Post::sendPost(
             $files,
             $category,

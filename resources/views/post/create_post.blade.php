@@ -48,7 +48,7 @@
                 @endif
             </div>
             <div class="form-group">
-                <input type="file" name="files[][photo]" multiple required>
+                <input type="file" name="files[][photo]" id="select_file" accept="image/*" onchange="check();" multiple required>
                 <div class="valid-feedback">OK.</div>
                 <div class="invalid-feedback">必須項目です</div>
             </div>
@@ -67,6 +67,15 @@
         </form>
     </div>
     <script>
+        // アップロード画像 6枚以上でエラー
+        function check(){
+        let fileList = document.getElementById("select_file").files;
+            if (fileList.length >= 6){
+                alert("画像は5枚まで");
+                document.getElementById("select_file").value = "";
+            }
+        }
+
         (function() {
             // 厳格モード
             'use strict';
