@@ -11,7 +11,11 @@
     <body> 
         <div class="container">
             <i class="fas fa-fire"></i>
-            <h2>exciteCAMP<small>Login</small></h2>
+            
+            <h2>
+                <a href={{ route('welcome') }}>exciteCAMP</a>
+                <small>Login</small>
+            </h2>
             <form action="" method="POST">
                 @csrf
                 <div class="group">

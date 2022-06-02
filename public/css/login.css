@@ -1,6 +1,12 @@
-* { box-sizing:border-box; }
+a {
+    color: rgb(5, 247, 170);
+    text-decoration: none !important;
+}
 
-/* basic stylings ------------------------------------------ */
+a:hover {
+    color: rgb(5, 247, 170);
+}
+
 body {
     background-image: url('/images/login.jpg');
     background-size: 350px 500px;
