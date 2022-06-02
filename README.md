@@ -1,6 +1,8 @@
 # アプリケーション名
 「exciteCAMP」
 
+![top](https://user-images.githubusercontent.com/87395450/171743573-5251a938-9148-4807-8e2f-bf1ab4ada9b9.gif)
+
 
 ## アプリケーション概要
 自分のキャンプした内容を投稿、検索できるアプリです。
