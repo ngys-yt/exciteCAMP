@@ -1,0 +1,13 @@
+
+.post {
+    display: flex;
+    flex-wrap: wrap-reverse;
+    flex-direction:row-reverse; 
+}
+
+.post img {
+    width: 215px;
+    height: 215px;
+    object-fit: cover;
+    margin: 3px;
+}
