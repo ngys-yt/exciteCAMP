@@ -34,6 +34,7 @@ class Follow extends Model
     }
 
     public function getFollowIds($id){
+        $follow_ids = [];
         // followsにユーザー($id)があるか そのままfollow_ids取得
         if($i = $this->where('user_id',$id)->value('follow_ids')){
             // '$i'はカンマ区切りの文字列のため配列にする(explode)
@@ -41,7 +42,7 @@ class Follow extends Model
             // $follow_idsは配列
             $follow_users = User::whereIn('id',$follow_ids)->get();
         }else{
-            $follow_users = NULL;
+            $follow_users = User::whereIn('id',$follow_ids)->get();
         }
 
         return $follow_users;
