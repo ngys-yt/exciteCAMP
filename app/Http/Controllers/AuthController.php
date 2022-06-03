@@ -30,7 +30,7 @@ class AuthController extends Controller
                         ->subject('【 excite CAMP 】');
         });
 
-        return redirect()->route('emails_complete')->withInput($request->only(['name']));
+        return redirect()->route('emails_complete');
     }
 
 
