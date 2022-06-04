@@ -100,16 +100,30 @@
 </div>
 @endsection
 @section('body')
-    <div>
-        <div class="container">
-            <h1>プロフィール画面</h1>
+        <div class="main">
             <div>
-                背景<img src="{{ $user->cover }}" alt="" style="width: 100px;">
+                @if ($user->cover === NULL)
+                    <div class="header-img-null">
+                        <p>exciteCAMP</p>
+                    </div>
+                @else
+                    <div class="header-img">
+                        <img src="{{ $user->cover }}" alt="背景画像">
+                    </div>
+                @endif
             </div>
             <div>
-                画像<img src="{{ $user->image }}" alt="" style="width: 100px;">
+                @if ($user->image === NULL)
+                    <div class="icon-null">
+                        <p><i class="fas fa-user"></i></p>
+                    </div>
+                @else
+                    <div class="icon-img">
+                        <img src="{{ $user->image }}" alt="アイコン画像">
+                    </div>
+                @endif
             </div>
-            <div>
+            <div class="name">
                 名前:{{ $user->name }}
                 @if($follow)
                     <form action="{{ route('follow') }}" name="follow" method="POST">
@@ -133,27 +147,31 @@
                     </form>
                 @endif
             </div>
-            <div>
-                自己紹介<br>
-                {!! nl2br($user->profile) !!}   
-                {{-- <br>(特殊文字)をエスケープさせないために !! で囲む --}}
-                {{-- <br>以外をエスケープさせるために nl2br をつける --}}
-            </div>
-            <div class="item">
+            <div class="sns">
+                @isset($user->twitter)
                 <a href="{{ $user->twitter }}">
                     <i class="fab fa-twitter-square"></i>
                 </a>
+                @endisset
+                @isset($user->instagram)
                 <a href="{{ $user->instagram }}">
                     <i class="fab fa-instagram-square"></i>
-                </a>
-                <a href="{{ $user->facebook }}">
-                    <i class="fab fa-facebook-square"></i>
-                </a>
-                <a href="{{ $user->youtube }}">
-                    <i class="fab fa-youtube"></i>
-                </a>
+                    </a>
+                    @endisset
+                    @isset($user->facebook)
+                    <a href="{{ $user->facebook }}">
+                        <i class="fab fa-facebook-square"></i>
+                    </a>
+                    @endisset
+                    @isset($user->youtube)
+                    <a href="{{ $user->youtube }}">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                @endisset
             </div>
-            <div>
+        </div>
+        <div class="contents">
+            <div class="side-menu">
                 <a href="{{ route('ff_list',['id' => $user->id]) }}?1=follow">フォロー</a>
                 <a href="{{ route('ff_list',['id' => $user->id]) }}?2=follower">フォロワー</a>
                 <a href="{{ route('contact') }}">問い合わせ</a>
@@ -161,30 +179,39 @@
                 <a href="{{ route('edit_password') }}">パスワード変更</a>
                 <a href="{{ route('withdrawal') }}">退会</a>
             </div>
-            <div>
-                {{-- カテゴリー選択ボタン --}}
-                <a href="{{ route('profile_detail',['id' => $user->id]) }}?d=all">全て</a>
-                <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=CAMP">CAMP</a>
-                <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=FOOD">FOOD</a>
-                <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=GEAR">GEAR</a>
-            </div>
-            <div>
-                @php
-                    if($category=request()->get('c')){
-                        $posts = $user->posts()->where('category', $category)->get();
-                    }elseif(request()->get('d')){
-                        $posts = $user->posts;
-                    }else{
-                        $posts = $user->posts;
-                    }
-                @endphp
-                @foreach ($posts as $post)
+            <div class="contents-body">
+                <div class="profile">
+                    {!! nl2br($user->profile) !!}   
+                    {{-- <br>(特殊文字)をエスケープさせないために !! で囲む --}}
+                    {{-- <br>以外をエスケープさせるために nl2br をつける --}}
+                </div>
+                <div class="category">
+                    {{-- カテゴリー選択ボタン --}}
+                    <a href="{{ route('profile_detail',['id' => $user->id]) }}?d=all">全て</a>
+                    <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=CAMP">CAMP</a>
+                    <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=FOOD">FOOD</a>
+                    <a href="{{ route('profile_detail',['id' => $user->id]) }}?c=GEAR">GEAR</a>
+                </div>
+                <div class="post-img">
+                    @php
+                        if($category=request()->get('c')){
+                            $posts = $user->posts()->where('category', $category)->get();
+                        }elseif(request()->get('d')){
+                            $posts = $user->posts;
+                        }else{
+                            $posts = $user->posts;
+                        }
+                    @endphp
+                    @foreach ($posts as $post)
                     <a href="{{ route('post_detail', ['id'=>$post->id]) }}">
-                        <img src="{{ $post->photo }}" alt="" style="width: 100px">
+                        @php
+                            $photos = explode("," ,$post->photo);//photoを配列に変換
+                        @endphp 
+                        <img src="{{ $photos[0] }}" alt="投稿画像">
                     </a>
-                @endforeach
+                    @endforeach
+                </div>
             </div>
         </div>
-    </div>
 @endsection
     

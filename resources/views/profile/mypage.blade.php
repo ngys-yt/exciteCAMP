@@ -66,11 +66,13 @@
             <a href="{{ route('withdrawal') }}">退会</a>
         </div>
         <div class="contents-body">
-            <div class="profile">
-                {!! nl2br(Auth::user()->profile) !!}   
-                {{-- <br>(特殊文字)をエスケープさせないために !! で囲む --}}
-                {{-- <br>以外をエスケープさせるために nl2br をつける --}}
-            </div>
+            @isset(Auth::user()->profile)
+                <div class="profile">
+                    {!! nl2br(Auth::user()->profile) !!}   
+                    {{-- <br>(特殊文字)をエスケープさせないために !! で囲む --}}
+                    {{-- <br>以外をエスケープさせるために nl2br をつける --}}
+                </div>
+            @endisset
             <div class="category">
                 {{-- カテゴリー選択ボタン --}}
                 <a href="{{ route('mypage') }}?d=all">ALL</a>
