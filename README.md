@@ -30,6 +30,20 @@ https://excitecamp.link/<br>
 
 ![top](https://user-images.githubusercontent.com/87395450/171992184-34da7b01-ce81-4254-9b6b-d50ab4b00a16.gif)<br>
 
+## マイページ
+サイドメニューの編集ボタンから情報の編集を行えます。
+
+
+## 投稿
+ヘッダーの投稿ボタンをクリックするとカテゴリー別の投稿画面に遷移します。
+キャンプを選択するとgooleマップが表示されます。
+ここに入力された都道府県と地点名がDBに保存され、投稿に反映されます。<br>
+![post_camp](https://user-images.githubusercontent.com/87395450/171993563-b707b05b-654e-486b-82e4-f9ec26c0c7d1.gif)<br>
+投稿すると投稿詳細ページに遷移します。<br>
+キャンプ以外のFOODとGEARは同じフォーマットを使用して表示方法だけ変更しています。<br>
+![post](https://user-images.githubusercontent.com/87395450/171993702-aa3f9b09-1b96-4a3c-86bf-79c81ef44ac4.gif)<br>
+
+
 ## 目指した課題解決
 キャンプ場の情報(都道府県、ロケーション)が一つのアプリで取得できるWEBアプリを目指しました。<br>
 
