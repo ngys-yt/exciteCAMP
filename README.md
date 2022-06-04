@@ -32,7 +32,10 @@ https://excitecamp.link/<br>
 
 ## マイページ
 サイドメニューの編集ボタンから情報の編集を行えます。
-
+![mypage](https://user-images.githubusercontent.com/87395450/172025095-14c8555b-7a34-49f1-b30c-cceb6df53936.gif)
+各SNSのURLを登録することもできます。<br>
+自己紹介文下部のカテゴリーボタンでマイページに表示される投稿を切り替えることができます。<br>
+画像クリックで投稿詳細ページへ遷移します。<br>
 
 ## 投稿
 ヘッダーの投稿ボタンをクリックするとカテゴリー別の投稿画面に遷移します。
@@ -40,9 +43,18 @@ https://excitecamp.link/<br>
 ここに入力された都道府県と地点名がDBに保存され、投稿に反映されます。<br>
 ![post_camp](https://user-images.githubusercontent.com/87395450/171993563-b707b05b-654e-486b-82e4-f9ec26c0c7d1.gif)<br>
 投稿すると投稿詳細ページに遷移します。<br>
-キャンプ以外のFOODとGEARは同じフォーマットを使用して表示方法だけ変更しています。<br>
+キャンプ以外のFOODとGEARは同じフォーマットを使用して表示する文字だけ変更しています。<br>
 ![post](https://user-images.githubusercontent.com/87395450/171993702-aa3f9b09-1b96-4a3c-86bf-79c81ef44ac4.gif)<br>
+投稿詳細ページでは複数画像が投稿されていたら矢印をクリックして画像が切り替わるようにしました。<br>
+画像が一枚の時は矢印は表示されません。<br>
+![post_detail](https://user-images.githubusercontent.com/87395450/172025033-d52065b7-99ef-46c3-84bb-4f6e3a36d013.gif)<br>
+topページから投稿一覧画面や投稿詳細画面へ遷移することも可能です。<br>
+![top_post](https://user-images.githubusercontent.com/87395450/172025327-f940b192-a294-4536-8f37-d7cf759e5703.gif)<br>
+![top_post_detail](https://user-images.githubusercontent.com/87395450/172025331-165de4e3-41dc-4696-a639-47e1788efb76.gif)<br>
 
+## ログアウト
+ヘッダーにあるログアウトボタンでログアウトできます。
+![logout](https://user-images.githubusercontent.com/87395450/172025369-14209f59-db67-41cf-b95b-13a05371153e.gif)<br>
 
 ## 目指した課題解決
 キャンプ場の情報(都道府県、ロケーション)が一つのアプリで取得できるWEBアプリを目指しました。<br>
