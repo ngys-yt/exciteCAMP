@@ -2,6 +2,8 @@
 
 @section('head')
     <link rel="stylesheet" href="{{ asset('/css/chat.css') }}">
+    <script src="{{ asset('/js/direct_message.js') }}"></script>
+
 @endsection
     
 @section('body')
@@ -66,8 +68,8 @@
         </div>
     </div>
     <script>
-        let target = document.getElementById('scroll');
-        target.scrollIntoView(false);
+        // let target = document.getElementById('scroll');
+        // target.scrollIntoView(false);
     </script>
 @endsection
     

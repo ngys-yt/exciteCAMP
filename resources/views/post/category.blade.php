@@ -5,6 +5,8 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/category.css') }}">
+    <script src="{{ asset('/js/category.js') }}"></script>
+
 @endsection
 
 @section('body')
@@ -143,28 +145,28 @@
 
     {{------------------ modal validation ------------------------}}
     <script>
-        (function() {
-            // 厳格モード
-            'use strict';
-                // load ページの読み込みが完了した時
-                window.addEventListener('load', function() {
-                // className 取得
-                const forms = document.getElementsByClassName('needs-validation');
-                const validation = Array.prototype.filter.call(forms, function(form) {
-                    // submitイベントでバリデーションを実行する
-                    form.addEventListener('submit', function(event) {
-                    // バリデーションを実行する
-                    if (form.checkValidity() === false) {
-                        // バリデーション失敗時にsubmitイベントを停止させる
-                        event.preventDefault();
-                        event.stopPropagation();
-                    }
-                    // バリデーション終了のCSSクラスを追加する
-                    form.classList.add('was-validated');
-                    }, false);
-                });
-            }, false);
-        })();
+        // (function() {
+        //     // 厳格モード
+        //     'use strict';
+        //         // load ページの読み込みが完了した時
+        //         window.addEventListener('load', function() {
+        //         // className 取得
+        //         const forms = document.getElementsByClassName('needs-validation');
+        //         const validation = Array.prototype.filter.call(forms, function(form) {
+        //             // submitイベントでバリデーションを実行する
+        //             form.addEventListener('submit', function(event) {
+        //             // バリデーションを実行する
+        //             if (form.checkValidity() === false) {
+        //                 // バリデーション失敗時にsubmitイベントを停止させる
+        //                 event.preventDefault();
+        //                 event.stopPropagation();
+        //             }
+        //             // バリデーション終了のCSSクラスを追加する
+        //             form.classList.add('was-validated');
+        //             }, false);
+        //         });
+        //     }, false);
+        // })();
     </script>
 
 @endsection

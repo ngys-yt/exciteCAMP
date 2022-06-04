@@ -7,6 +7,8 @@
         <link rel="stylesheet" href="{{ asset('css/register_main.css') }}">
         <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/6558f17102.js" crossorigin="anonymous"></script>
+        <script src="{{ asset('/js/register_main.js') }}"></script>
+
     </head>
     <body> 
         <div class="container">
@@ -35,7 +37,7 @@
                 {{-- お問合せフォーム --}}
             </p>
         </div>
-        <script>
+        {{-- <script>
             const pwd = document.getElementById('password');
             const pwdCheck = document.getElementById('password-check');
             pwdCheck.addEventListener('change', function() {
@@ -45,6 +47,6 @@
                     pwd.setAttribute('type', 'password');
                 }
             }, false);
-        </script> 
+        </script>  --}}
     </body>
 </html>
