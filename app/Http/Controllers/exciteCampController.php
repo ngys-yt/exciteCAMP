@@ -107,7 +107,8 @@ class exciteCampController extends Controller
             // いいね機能
             // ログインユーザーのLike()のpost_idsに$idがいるか、存在確認(exists)
             $like = Auth::user()->like()->where('post_ids','like', '%,'.$id.',%')->exists();
-            
+
+    //------------------------------------- いいね件数 ------------------------------------------------//
             // ユーザーがいいねしたpost_idがpost_idsにまとめて入っている
             // $post_ids = Like::pluck('post_ids');
             // $count = 0;
@@ -116,7 +117,8 @@ class exciteCampController extends Controller
             //         $count++;
             //     }
             // }
-
+    //-------------------------------------------------------------------------------------------------//
+    
             //photoを配列に変換
             $photos = explode("," ,$post->photo);
 
