@@ -5,8 +5,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="{{ asset('css/category.css') }}">
-    <script src="{{ asset('/js/category.js') }}"></script>
-
 @endsection
 
 @section('body')
@@ -139,6 +137,7 @@
     </div>
 
     {{----------------- googleMap modal表示 ----------------------}}
+    <script src="{{ asset('/js/category.js') }}"></script>
     <script src="{{ asset('/js/map.js') }}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZCYYOoFZOIseoW_YfdYcX5TIupEPAzI&callback=initMap"></script>
 

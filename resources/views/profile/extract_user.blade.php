@@ -1,8 +1,6 @@
 @extends('header')
 
 @section('head')
-<script src="{{ asset('/extract_user/map.js') }}"></script>
-
 @endsection
     
 @section('body')
@@ -59,10 +57,6 @@
             </div>
         </div>
     </div>
-    <script>
-        // // スクロール 常に一番下を表示
-        // let target = document.getElementById('scroll');
-        // target.scrollIntoView(false);
-    </script>
+    <script src="{{ asset('/extract_user/map.js') }}"></script>
 @endsection
     

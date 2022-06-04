@@ -1,6 +1,4 @@
 'use strict';
-
-        const photos = @json($photos);
         let num = 0;
 
         function changeImg(num) {
