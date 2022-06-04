@@ -53,8 +53,10 @@ class exciteCampController extends Controller
     public function profileDetail($id){
         $user = User::getProfile($id);
         $follow = Auth::user()->follow()->where('follow_ids','like', '%,'.$id.',%')->exists();
+        $follow_count = count(Follow::getFollowIds($id));
+        $follower_count = count(Follow::getFollowerIds($id));
 
-        return view('profile.profile_detail',compact('user','follow'));
+        return view('profile.profile_detail',compact('user','follow','follow_count','follower_count'));
     }
 
     public function ffList($id){
