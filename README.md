@@ -80,6 +80,8 @@ https://excitecamp.link/
 ![post_detail](https://user-images.githubusercontent.com/87395450/172025033-d52065b7-99ef-46c3-84bb-4f6e3a36d013.gif)
 <br><br>
 topページから投稿一覧画面や投稿詳細画面へ遷移することも可能です。
+<br>
+他ユーザーの投稿には下部に「いいねボタン」を実装しています。
 <br><br>
 ![top_post](https://user-images.githubusercontent.com/87395450/172025327-f940b192-a294-4536-8f37-d7cf759e5703.gif)
 <br>
