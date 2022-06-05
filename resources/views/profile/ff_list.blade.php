@@ -15,7 +15,7 @@
             @if($follow_users)
                 @foreach ($follow_users as $follow_user)
                 <div class="user">
-                    @if ($follow_user->id === Auth::id())
+                    @if ($follow_user->id == Auth::id())
                         <a href="{{ route('mypage') }}">{{ $follow_user->name }}</a>
                     @else
                         <a href="{{ route('profile_detail',['id' => $follow_user->id]) }}">{{ $follow_user->name }}</a>
