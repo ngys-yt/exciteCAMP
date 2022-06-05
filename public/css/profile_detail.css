@@ -58,12 +58,27 @@ body a:hover {
     border-radius: 50%;
 }
 
+.name-line {
+    display: flex;
+}
+
 .name {
     display: inline-block;
     text-align: left;
     margin-top: 20px;
     margin-left: 400px;
     font-size: 50px;
+    width: 600px;
+}
+
+.switching {
+    text-align: left;
+    margin-top: 40px;
+    font-size: 30px;
+}
+
+span {
+    cursor: pointer;
 }
 
 .sns {

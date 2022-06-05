@@ -55,11 +55,11 @@ class exciteCampController extends Controller
         $follow = Auth::user()->follow()->where('follow_ids','like', '%,'.$id.',%')->exists();
         $follow_count = count(Follow::getFollowIds($id));
         $follower_count = count(Follow::getFollowerIds($id));
-
         return view('profile.profile_detail',compact('user','follow','follow_count','follower_count'));
     }
 
     public function ffList($id){
+        $user_id = $id;
         $follow_users = Follow::getFollowIds($id);
         $follower_users = Follow::getFollowerIds($id);
         if(!$follow_users){
@@ -68,7 +68,7 @@ class exciteCampController extends Controller
             $follower_users = NULL;
         }
 
-        return view('profile.ff_list',compact('follow_users','follower_users'));
+        return view('profile.ff_list',compact('user_id','follow_users','follower_users'));
     }
 
     public function createPost(Request $request){
@@ -118,7 +118,7 @@ class exciteCampController extends Controller
             //     }
             // }
     //-------------------------------------------------------------------------------------------------//
-    
+
             //photoを配列に変換
             $photos = explode("," ,$post->photo);
 

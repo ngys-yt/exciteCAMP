@@ -3,12 +3,12 @@
 @section('head')
     <link rel="stylesheet" href="{{ asset('/css/ff_list.css') }}">
 @endsection
-    
+
 @section('body')
     <div class="container">
         <div class="switching">
-            <a href="{{ route('ff_list',['id' => Auth::id()]) }}?1=follow">フォロー</a>
-            <a href="{{ route('ff_list',['id' => Auth::id()]) }}?2=follower">フォロワー</a>
+            <a href="{{ route('ff_list',['id' => $user_id]) }}?1=follow">フォロー</a>
+            <a href="{{ route('ff_list',['id' => $user_id]) }}?2=follower">フォロワー</a>
         </div>
         <div class="list">
         @if (request()->get('1'))
