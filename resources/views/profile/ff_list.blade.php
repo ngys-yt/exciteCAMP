@@ -15,7 +15,11 @@
             @if($follow_users)
                 @foreach ($follow_users as $follow_user)
                 <div class="user">
-                    <a href="{{ route('profile_detail',['id' => $follow_user->id]) }}">{{ $follow_user->name }}</a>
+                    @if ($follow_user->id === Auth::id())
+                        <a href="{{ route('mypage') }}">{{ $follow_user->name }}</a>
+                    @else
+                        <a href="{{ route('profile_detail',['id' => $follow_user->id]) }}">{{ $follow_user->name }}</a>
+                    @endif
                 </div>
                 @endforeach
             @endif
@@ -26,7 +30,11 @@
             @if($follower_users)
                 @foreach ($follower_users as $follower_user)
                 <div class="user">
-                    <a href="{{ route('profile_detail',['id' => $follower_user->id]) }}">{{ $follower_user->name }}</a>
+                    @if ($follower_user->id === Auth::id())
+                        <a href="{{ route('mypage') }}">{{ $follower_user->name }}</a>
+                    @else
+                        <a href="{{ route('profile_detail',['id' => $follower_user->id]) }}">{{ $follower_user->name }}</a>
+                    @endif
                 </div>
                 @endforeach
             @endif
