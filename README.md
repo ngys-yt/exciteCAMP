@@ -13,9 +13,9 @@ GoogleMapsApiを使用してGoogleマップの表示、地点検索、ピン表�
 ## URL
 https://excitecamp.link/
 <br><br>
-※インフラとセキュリティの知識が浅いため、AWSでhttps通信ができていることを確認したのちEC2とRDSを停止しました。
+※インフラとセキュリティの知識が浅いため、AWSでhttps通信ができていることを確認したのちRDSを停止しました。
 <br><br>
-<img width="507" alt="スクリーンショット 2022-06-04 17 21 03" src="https://user-images.githubusercontent.com/87395450/171991205-dc74bb79-4f29-4b1e-9c3c-ce3e9dde38ad.png">
+<img width="516" alt="スクリーンショット 2022-06-06 7 07 54" src="https://user-images.githubusercontent.com/87395450/172072640-eebb9e8a-d316-401a-95e5-9748e9913521.png">
 <br><br>
 
 ## 利用方法
