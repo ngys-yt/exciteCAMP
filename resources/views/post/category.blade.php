@@ -44,12 +44,18 @@
                                 <div class="invalid-feedback">必須項目です</div>
                             </div>
                             <div class="form-group">
-                                <input name="kind_2" type="text" id="keyword" autocomplete="off" placeholder="キャンプ場" required>
+                                <input name="kind_2" type="text" id="keyword" placeholder="キャンプ場" required>
                                 <button type="button" id="search">検索実行</button>
+                                <p>キャンプ場が地図上に出てこない場合、投稿できますがTOP画面には表示されません</p>
                                 <div class="valid-feedback">OK.</div>
                                 <div class="invalid-feedback">必須項目です</div>
                             </div>
+
+                            {{---------------------- google map ------------------------}}
                             <div id="map" style="width: 100%; height: 500px;"></div>
+                            {{----------------------------------------------------------}}
+
+                            <input type="hidden" id="latlng" name="latlng" value="">
                             <button type="submit">決定</button>
                         </form>
                     </div>
@@ -128,7 +134,7 @@
                                 <div class="valid-feedback">OK.</div>
                                 <div class="invalid-feedback">必須項目です</div>
                             </div>
-                            <input type="submit" value="決定">
+                            <input id="submit" type="submit" value="決定">
                         </form>
                     </div>
                 </div>
@@ -138,7 +144,7 @@
 
     {{----------------- googleMap modal表示 ----------------------}}
     <script src="{{ asset('/js/category.js') }}"></script>
-    <script src="{{ asset('/js/map.js') }}"></script>
+    <script src="{{ asset('/js/post_map.js') }}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZCYYOoFZOIseoW_YfdYcX5TIupEPAzI&callback=initMap"></script>
 
 @endsection

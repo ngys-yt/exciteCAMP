@@ -25,6 +25,7 @@
                         <p class="kind_2">{{ $kind_2 }}</p>
                         <input type="hidden" name="kind_2" value="{{$kind_2}}">
                     </div>
+                    <input type="hidden" name="latlng">
                 @elseif ( $category == 'FOOD' )
                     <div>
                         <p>料理名</p>

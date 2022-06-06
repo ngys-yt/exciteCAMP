@@ -4,6 +4,7 @@
     position: relative;
     width: 100vw;
     height: 600px;
+    margin-bottom: 30px;
 }
 
 .title-fas {
@@ -55,6 +56,17 @@
 .title2::after {
 	margin-left: 30px;
 	transform: rotate(35deg)
+}
+
+.search {
+    width: 75%;
+    margin: 0px auto;
+}
+
+.map {
+    height: 600px;
+    width: 80%;
+    margin: 10px auto;
 }
 
 .container-fluid {

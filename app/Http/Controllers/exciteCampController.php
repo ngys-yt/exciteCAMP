@@ -18,6 +18,7 @@ class exciteCampController extends Controller
 {
 
     public function top(){
+        $map = 
         $camps = Post::topGetCamps();
         $foods = Post::topGetfoods();
         $gears = Post::topGetgears();
@@ -76,8 +77,15 @@ class exciteCampController extends Controller
         $kind_1 = $request->get('kind_1');
         $kind_2 = $request->get('kind_2');
 
+        if($category == "CAMP"){
+            $latlng = $request->get('latlng');
+            return view('post.create_post',compact('category','kind_1','kind_2','latlng'));
+        }
+
         return view('post.create_post',compact('category','kind_1','kind_2'));
     }
+
+
 
     public function sendPost(Request $request){
         
@@ -87,7 +95,22 @@ class exciteCampController extends Controller
         $kind_2 = $request->get('kind_2');
         $title = $request->get('title');
         $content = $request->get('content');
-        
+
+        if($category == "CAMP"){
+            $latlng = $request->get('latlng');
+            $id = Post::sendCampPost(
+                $files,
+                $category,
+                $kind_1,
+                $kind_2,
+                $title,
+                $content,
+                $latlng
+            );
+            return redirect()->route('post_detail', ['id' => $id]); // [] パラメーター
+        }
+
+
         $id = Post::sendPost(
             $files,
             $category,

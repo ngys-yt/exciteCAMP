@@ -76,6 +76,37 @@ class Post extends Model
         return $post->id;
     }
 
+    public function sendCampPost($files,$category,$kind_1,$kind_2,$title,$content,$latlng){
+        $post = new self();
+        $post->user_id = Auth::id();
+        $post->category = $category;
+        $post->kind_1 = $kind_1;
+        $post->kind_2 = $kind_2;
+        $post->title = $title;
+        $post->content = $content;
+        $post->location = $latlng;
+        
+        foreach ($files as $index=>$photo){
+            // 画像保存
+            $photo_path = $photo['photo']->store('public/post_photo');
+            $photo_path = str_replace('public','/storage',$photo_path);
+            
+            // １周目の処理
+            if ($index === array_key_first($files)){
+                $post->photo = "$photo_path";
+            }else{
+                // ２周目以降の処理
+                // 文字列の結合
+                $post->photo .= ",$photo_path";
+            }
+        }
+
+        $post->save();
+        
+        // 投稿を作ったタイミングでそのIDを取得⇨パラメーターとして送る
+        return $post->id;
+    }
+
 //---------------------------------- 投稿一覧 ---------------------------------//
     public function getCamp(){
         return $this->where('category','CAMP')->select('id','photo')->get();
