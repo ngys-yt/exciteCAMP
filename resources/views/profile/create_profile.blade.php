@@ -18,29 +18,35 @@
             </div>
             <div>
                 名前
-                <input class="form-control" type="name" name="name" value="{{ Auth::user()->name }}" required>
+                <input class="form-control" type="name" name="name" value="{{ Auth::user()->name }}" placeholder="名前を入力してください" required>
+                <div class="valid-feedback">OK.</div>
+                <div class="invalid-feedback">必須項目です</div>
+            </div>
+            <div>
+                住所  ※プロフィールには公開されません
+                <input class="form-control" type="text" name="region" value="{{ Auth::user()->region }}" placeholder="都道府県のみを入力してください" required>
                 <div class="valid-feedback">OK.</div>
                 <div class="invalid-feedback">必須項目です</div>
             </div>
             <div>
                 自己紹介
-                <textarea class="form-control" name="profile" rows="5">{{ Auth::user()->profile }}</textarea> {{-- cols=横幅、rows=高さ --}}
+                <textarea class="form-control" name="profile" rows="5" placeholder="自己紹介を入力してください">{{ Auth::user()->profile }}</textarea> {{-- cols=横幅、rows=高さ --}}
             </div>
             <div>
                 Twitter
-                <input class="form-control" type="url" name="twitter" value="{{ Auth::user()->twitter }}">
+                <input class="form-control" type="url" name="twitter" value="{{ Auth::user()->twitter }}" placeholder="TwitterのURLを貼ってください">
             </div>
             <div>
                 Instagram
-                <input class="form-control" type="url" name="instagram" value="{{ Auth::user()->instagram }}">
+                <input class="form-control" type="url" name="instagram" value="{{ Auth::user()->instagram }}" placeholder="InstagramのURLを貼ってください">
             </div>
             <div>
                 Facebook
-                <input class="form-control" type="url" name="facebook" value="{{ Auth::user()->facebook }}">
+                <input class="form-control" type="url" name="facebook" value="{{ Auth::user()->facebook }}" placeholder="FacebookのURLを貼ってください">
             </div>
             <div>
                 Youtube
-                <input class="form-control" type="url" name="youtube" value="{{ Auth::user()->youtube }}">
+                <input class="form-control" type="url" name="youtube" value="{{ Auth::user()->youtube }}" placeholder="YoutubeのURLを貼ってください">
             </div>
             <div class="button">
                 <a href="{{ route('mypage') }}">キャンセル</a>

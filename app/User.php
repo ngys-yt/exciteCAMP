@@ -105,7 +105,7 @@ class User extends Authenticatable implements MustVerifyEmail
     }
 
     //-----------------------------------プロフィール編集-------------------------------------// 
-    public function createProfile($cover,$image,$name,$profile,$twitter,$instagram,$facebook,$youtube){
+    public function createProfile($cover,$image,$name,$region,$profile,$twitter,$instagram,$facebook,$youtube){
 
         // ログインしているユーザーのレコード取得
         $user = Auth::user(); 
@@ -141,6 +141,7 @@ class User extends Authenticatable implements MustVerifyEmail
         
         // 各カラムに入力
         $user->name = $name;
+        $user->region = $region;
         $user->profile = $profile;
         $user->twitter = $twitter;
         $user->instagram = $instagram;

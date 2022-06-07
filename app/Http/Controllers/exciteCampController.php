@@ -27,11 +27,11 @@ class exciteCampController extends Controller
     }
 
     public function createProfile(Request $request){
-        //DBにデータがある inputは空でくる 
         User::createProfile(
             $request->file('cover'),
             $request->file('image'),
             $request->get('name'),
+            $request->get('region'),
             $request->get('profile'),
             $request->get('twitter'),
             $request->get('instagram'),
