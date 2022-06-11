@@ -15,11 +15,11 @@
     </div>
     <div class="container-fluid">
         {{---------------------- google map ------------------------}}
-        {{-- <div class="search" >
+        <div class="search" >
             <input name="region" type="text" id="keyword" placeholder="都道府県を入力" required>
             <button type="button" id="search">検索実行</button>
         </div>
-        <div class="map" id="map"></div> --}}
+        <div class="map" id="map"></div>
         {{----------------------------------------------------------}}
         <div class="card w-75 mx-auto">
             <div class="card-body">
@@ -76,6 +76,10 @@
             </div>
         </div>
     </div>
+    <script>
+        const region = @json($region);
+        const camp_names = @json($camp_names);
+    </script>
     <script src="{{ asset('/js/top_map.js') }}"></script>
     <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBlZCYYOoFZOIseoW_YfdYcX5TIupEPAzI&callback=initMap"></script>
 @endsection

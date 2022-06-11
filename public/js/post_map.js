@@ -29,9 +29,6 @@ function initMap() {
                     if (results[0].geometry) {
                     // 緯度経度を取得
                         const latlng = results[0].geometry.location;
-                        // val()メソッドを使ってvalue値を設定できる
-                        // idがlat(またはlng)のvalue値に、変数lat(またはlng)を設定する
-                        document.getElementById('latlng').value = latlng;
                     // 住所を取得
                         const address = results[0].formatted_address;
                     // マーカーへの吹き出しの追加

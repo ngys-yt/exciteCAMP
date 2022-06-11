@@ -46,7 +46,7 @@
                             <div class="form-group">
                                 <input name="kind_2" type="text" id="keyword" placeholder="キャンプ場" required>
                                 <button type="button" id="search">検索実行</button>
-                                <p>キャンプ場が地図上に出てこない場合、投稿できますがTOP画面には表示されません</p>
+                                <p>キャンプ場がマップに出てこない場合、TOP画面のマップに表示されません</p>
                                 <div class="valid-feedback">OK.</div>
                                 <div class="invalid-feedback">必須項目です</div>
                             </div>
@@ -55,7 +55,6 @@
                             <div id="map" style="width: 100%; height: 500px;"></div>
                             {{----------------------------------------------------------}}
 
-                            <input type="hidden" id="latlng" name="latlng" value="">
                             <button type="submit">決定</button>
                         </form>
                     </div>

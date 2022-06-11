@@ -44,6 +44,16 @@ class Post extends Model
                     ->take(6)
                     ->get();
     }
+    public function toGetCampNames(){
+        $get_camp_names = $this->where('category','camp')
+                                ->select('kind_2')
+                                ->get()
+                                ->toArray(); // オブジェクト→配列に変換
+
+        // キーを取り除く
+        $camp_names = array_column($get_camp_names, 'kind_2');
+        return $camp_names;
+    }
 //------------------------------------------------------------------//  
 
     public function sendPost($files,$category,$kind_1,$kind_2,$title,$content){
@@ -76,7 +86,7 @@ class Post extends Model
         return $post->id;
     }
 
-    public function sendCampPost($files,$category,$kind_1,$kind_2,$title,$content,$latlng){
+    public function sendCampPost($files,$category,$kind_1,$kind_2,$title,$content,$post_lat,$post_lng){
         $post = new self();
         $post->user_id = Auth::id();
         $post->category = $category;
@@ -84,7 +94,8 @@ class Post extends Model
         $post->kind_2 = $kind_2;
         $post->title = $title;
         $post->content = $content;
-        $post->location = $latlng;
+        $post->lat = $post_lat;
+        $post->lng = $post_lng;
         
         foreach ($files as $index=>$photo){
             // 画像保存

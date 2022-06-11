@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="{{ asset('css/create_post.css') }}">
 @endsection
 
-@section('body') 
+@section('body')
     <div class="main">
         <form action="" method="post" enctype="multipart/form-data" class="needs-validation" novalidate>
         @csrf
@@ -25,7 +25,6 @@
                         <p class="kind_2">{{ $kind_2 }}</p>
                         <input type="hidden" name="kind_2" value="{{$kind_2}}">
                     </div>
-                    <input type="hidden" name="latlng">
                 @elseif ( $category == 'FOOD' )
                     <div>
                         <p>料理名</p>

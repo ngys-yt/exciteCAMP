@@ -24,7 +24,7 @@
             </div>
             <div>
                 住所  ※プロフィールには公開されません
-                <input class="form-control" type="text" name="region" value="{{ Auth::user()->region }}" placeholder="都道府県のみを入力してください" required>
+                <input class="form-control" type="text" name="region" value="{{ Auth::user()->region }}" placeholder="TOPページに表示されるGoogleMapの中心地点になります" required>
                 <div class="valid-feedback">OK.</div>
                 <div class="invalid-feedback">必須項目です</div>
             </div>

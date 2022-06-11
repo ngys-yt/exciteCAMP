@@ -18,12 +18,13 @@ class exciteCampController extends Controller
 {
 
     public function top(){
-        $map = 
+        $region = Auth::user()->region;
         $camps = Post::topGetCamps();
         $foods = Post::topGetfoods();
         $gears = Post::topGetgears();
-
-        return view('top',compact('camps','foods','gears'));
+        $camp_names = Post::toGetCampNames();
+        
+        return view('top',compact('region','camps','foods','gears','camp_names'));
     }
 
     public function createProfile(Request $request){
@@ -78,14 +79,13 @@ class exciteCampController extends Controller
         $kind_2 = $request->get('kind_2');
 
         if($category == "CAMP"){
-            $latlng = $request->get('latlng');
-            return view('post.create_post',compact('category','kind_1','kind_2','latlng'));
+            $lat = $request->get('lat');
+            $lng = $request->get('lng');
+            return view('post.create_post',compact('category','kind_1','kind_2','lat','lng'));
         }
 
         return view('post.create_post',compact('category','kind_1','kind_2'));
     }
-
-
 
     public function sendPost(Request $request){
         
@@ -97,7 +97,8 @@ class exciteCampController extends Controller
         $content = $request->get('content');
 
         if($category == "CAMP"){
-            $latlng = $request->get('latlng');
+            $lat = $request->get('lat');
+            $lng = $request->get('lng');
             $id = Post::sendCampPost(
                 $files,
                 $category,
@@ -105,11 +106,11 @@ class exciteCampController extends Controller
                 $kind_2,
                 $title,
                 $content,
-                $latlng
+                $lat,
+                $lng,
             );
             return redirect()->route('post_detail', ['id' => $id]); // [] パラメーター
         }
-
 
         $id = Post::sendPost(
             $files,
