@@ -37,12 +37,14 @@
                         <input type="hidden" name="kind_2" value="{{$kind_2}}">
                     </div>
                 @elseif ( $category == 'GEAR' )
-                    <div class="kind_1">
-                        ブランド：{{ $kind_1 }}
+                    <div>
+                        <p>ブランド名</p>
+                        <p class="kind_1">{{ $kind_1 }}</p>
                         <input type="hidden" name="kind_1" value="{{$kind_1}}">
                     </div>
-                    <div class="kind_2">
-                        アイテム：{{ $kind_2 }}
+                    <div>
+                        <p>アイテム</p>
+                        <p class="kind_2">{{ $kind_2 }}</p>
                         <input type="hidden" name="kind_2" value="{{$kind_2}}">
                     </div>
                 @endif
