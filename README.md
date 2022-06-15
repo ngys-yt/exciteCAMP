@@ -69,7 +69,7 @@ https://excitecamp.link/
 <br>
 キャンプ以外のFOODとGEARは同じフォーマットを使用して表示する文字だけ変更しています。
 <br><br>
-![post](https://user-images.githubusercontent.com/87395450/171993702-aa3f9b09-1b96-4a3c-86bf-79c81ef44ac4.gif)
+![post](https://user-images.githubusercontent.com/87395450/173927328-d04e6da2-cfe0-442a-9564-5c8faed11186.gif)
 <br><br>
 投稿詳細ページでは複数画像が投稿されていたら矢印をクリックして画像が切り替わるようにしました。
 <br>
