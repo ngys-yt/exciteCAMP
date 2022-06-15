@@ -114,11 +114,12 @@ topにGoogleマップを実装してDBの投稿データとGoogleマップのピ
 [DB設計](https://drive.google.com/file/d/1eNJbV7qZhDDmM9zTghluvUTwDuYlMCeO/view?usp=sharing)
 <br><br>
 
-## 使用言語・フレームワーク
+## 使用言語・フレームワーク・DB
 * HTML/CSS
 * JavaScript
-* laravel (6)
 * PHP (7.4.21)
+* laravel (6)
+* MySQL
 <br><br>
 
 ## 参考文献・参考サイト・参考アプリ
