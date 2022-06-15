@@ -122,7 +122,7 @@ topにGoogleマップを実装してDBの投稿データとGoogleマップのピ
 * MySQL
 <br><br>
 
-## 参考文献・参考サイト・参考アプリ
+## 参考文献・参考サイト
 * 侍エンジニア塾  教材
 * [laravel](https://readouble.com/laravel/6.x/ja/requests.html)
 * [Bootstrap](https://www.w3schools.com/bootstrap/default.asp)
